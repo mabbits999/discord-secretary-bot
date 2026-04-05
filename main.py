@@ -1,7 +1,10 @@
 import os
 import discord
 from openai import OpenAI
-
+from google.oauth2 import service_account
+from googleapiclient.discovery import build
+from datetime import datetime, timedelta, timezone
+import json
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 intents = discord.Intents.default()
