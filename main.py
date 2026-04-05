@@ -88,7 +88,7 @@ content = message.content.replace(f"<@{bot.user.id}>", "").replace(f"<@!{bot.use
 # ▼ここに追加
 if "今日の予定" in content or "今日のスケジュール" in content:
     reply = get_today_events()
-    await message.channel.send(reply)
+    
     return
 # ▲ここまで
 
