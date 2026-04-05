@@ -42,7 +42,7 @@ def get_today_events():
     end_of_day = now.replace(hour=23, minute=59, second=59, microsecond=0)
 
     events_result = service.events().list(
-        calendarId="primary",
+        calendarId="mabbits999@gmail.com",
         timeMin=start_of_day.isoformat(),
         timeMax=end_of_day.isoformat(),
         singleEvents=True,
