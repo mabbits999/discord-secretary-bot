@@ -135,7 +135,15 @@ KNOWLEDGE_DIR=/var/data/knowledge
 /remind remind_at:2026-04-10 20:00 title:講座開始1時間前 body:ZoomURLとスライドを最終確認してください
 ```
 
-## 7. knowledge の使い方
+## 7. ページ総覧（web/hub.html）
+
+`web/hub.html` は、これまで作った Web ページ（Claude Code のアーティファクト）を分類ごとに一覧化し、どのページにも一クリックで飛べる入口ページです。
+
+・公開版: https://claude.ai/code/artifact/97fa606a-98b7-4de1-970f-e475c26bc84a
+・ページの追加・編集は公開版の「ページを追加・編集」ボタンから行うと、一覧そのものが新しい版として公開されます
+・登録データはファイル内の `pages-data` ブロック（JSON）にあり、手で直しても構いません
+
+## 8. knowledge の使い方
 
 `knowledge/` に `.txt` や `.md` を入れてください。
 このボットは、その中から近い内容を探して答えます。

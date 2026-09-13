@@ -1,0 +1,661 @@
+<title>ページ総覧</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Old+Mincho:wght@700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style id="css">
+:root{
+  --bg:#F4F6F2;
+  --bg-2:#FFFFFF;
+  --bg-3:#EAEEE8;
+  --ink:#1B221E;
+  --ink-2:#4A554E;
+  --muted:#7A857E;
+  --line:#D6DDD5;
+  --line-2:#C3CCC2;
+  --accent:#1E6E5A;
+  --accent-ink:#FFFFFF;
+  --accent-soft:#DDEDE5;
+  --warn:#8A5A11;
+  --warn-soft:#F6E9CF;
+  --danger:#9B3B2E;
+  --shadow:0 12px 32px rgba(27,34,30,.14);
+  --font-body:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+  --font-display:"Zen Old Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141917;
+    --bg-2:#1C2320;
+    --bg-3:#242D29;
+    --ink:#E7ECE7;
+    --ink-2:#B3BDB6;
+    --muted:#7E8A82;
+    --line:#2C3632;
+    --line-2:#3A4641;
+    --accent:#5EC3A3;
+    --accent-ink:#0F1A16;
+    --accent-soft:#1D2F29;
+    --warn:#E3B45B;
+    --warn-soft:#3A2E14;
+    --danger:#E2867A;
+    --shadow:0 12px 32px rgba(0,0,0,.45);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141917;
+  --bg-2:#1C2320;
+  --bg-3:#242D29;
+  --ink:#E7ECE7;
+  --ink-2:#B3BDB6;
+  --muted:#7E8A82;
+  --line:#2C3632;
+  --line-2:#3A4641;
+  --accent:#5EC3A3;
+  --accent-ink:#0F1A16;
+  --accent-soft:#1D2F29;
+  --warn:#E3B45B;
+  --warn-soft:#3A2E14;
+  --danger:#E2867A;
+  --shadow:0 12px 32px rgba(0,0,0,.45);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:15px;
+  line-height:1.6;
+  padding-inline:clamp(16px,4vw,40px);
+  padding-block:0 96px;
+  font-feature-settings:"palt";
+}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1040px;margin:0 auto}
+
+/* header */
+.head{
+  display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 32px;
+  padding-block:36px 20px;
+  border-bottom:2px solid var(--ink);
+}
+.head h1{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:clamp(28px,4.5vw,40px);
+  letter-spacing:.04em;
+  line-height:1.15;
+  margin:0;
+  text-wrap:balance;
+}
+.head .eyebrow{
+  display:block;
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:8px;font-weight:500;
+}
+.stats{
+  display:flex;gap:16px 24px;flex-wrap:wrap;min-width:0;
+  font-family:var(--font-mono);font-size:12px;color:var(--ink-2);
+  font-variant-numeric:tabular-nums;
+}
+.stats b{display:block;font-size:22px;font-weight:500;color:var(--ink);line-height:1.1}
+.stats span{display:block;letter-spacing:.06em}
+
+/* toolbar */
+.tools{
+  position:sticky;top:0;z-index:5;
+  background:var(--bg);
+  padding-block:14px 12px;
+  border-bottom:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;
+}
+.search{
+  flex:1 1 160px;min-width:0;
+  display:flex;align-items:center;gap:8px;
+  background:var(--bg-2);border:1px solid var(--line-2);border-radius:6px;
+  padding:0 10px;height:38px;
+}
+.search svg{flex:none;color:var(--muted)}
+.search input{flex:1;min-width:0;border:0;background:transparent;height:100%;outline:none}
+.search input::placeholder{color:var(--muted)}
+.seg{display:flex;border:1px solid var(--line-2);border-radius:6px;overflow:hidden;background:var(--bg-2)}
+.seg button{
+  border:0;background:transparent;padding:0 12px;height:36px;cursor:pointer;color:var(--ink-2);font-size:13px;
+}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.btn{
+  border:1px solid var(--line-2);background:var(--bg-2);border-radius:6px;
+  height:38px;padding:0 14px;cursor:pointer;font-size:13px;font-weight:500;color:var(--ink);
+  display:inline-flex;align-items:center;gap:6px;white-space:nowrap;
+}
+.btn:hover{border-color:var(--ink-2)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(1.05)}
+.btn.ghost{border-color:transparent;background:transparent;color:var(--ink-2)}
+.btn.danger{color:var(--danger)}
+.btn:disabled{opacity:.5;cursor:default}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px;width:100%}
+.chip{
+  border:1px solid var(--line);background:transparent;border-radius:999px;
+  padding:4px 11px;font-size:12.5px;cursor:pointer;color:var(--ink-2);
+  display:inline-flex;align-items:center;gap:6px;line-height:1.4;
+}
+.chip em{font-style:normal;font-family:var(--font-mono);font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.chip[aria-pressed="true"] em{color:var(--bg);opacity:.75}
+
+/* sections & rows */
+.section{padding-block:28px 8px}
+.section-h{
+  display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+  padding-bottom:8px;border-bottom:1px solid var(--ink);
+}
+.section-h h2{margin:0;font-size:17px;font-weight:700;letter-spacing:.02em}
+.section-h .count{font-family:var(--font-mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.section-h .hint{font-size:12.5px;color:var(--muted);margin-left:auto}
+.rows{list-style:none;margin:0;padding:0}
+.row{
+  display:grid;
+  grid-template-columns:36px minmax(0,1fr) auto;
+  grid-template-areas:"ico main meta";
+  gap:4px 12px;align-items:center;
+  padding:12px 4px;border-bottom:1px solid var(--line);
+  position:relative;
+}
+.row:hover{background:var(--bg-3)}
+.row .ico{grid-area:ico;font-size:22px;line-height:1;text-align:center;filter:saturate(.9)}
+.row .main{grid-area:main;min-width:0}
+.row .title{
+  display:block;font-weight:500;text-decoration:none;font-size:15px;line-height:1.4;
+  overflow-wrap:anywhere;
+}
+.row .title:hover{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.row .title::after{content:"";position:absolute;inset:0}
+.row .note{display:block;font-size:12.5px;color:var(--muted);margin-top:2px;overflow-wrap:anywhere}
+.row .meta{grid-area:meta;display:flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.row .cat{font-family:var(--font-body);font-size:11.5px;color:var(--ink-2);background:var(--bg-3);border-radius:4px;padding:2px 7px;display:none}
+.row .go{color:var(--muted);display:inline-flex}
+.row .edit-actions{display:none;gap:4px;position:relative;z-index:1}
+.row .edit-actions button{
+  border:1px solid var(--line-2);background:var(--bg-2);border-radius:5px;cursor:pointer;
+  width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;color:var(--ink-2);
+}
+.row .edit-actions button:hover{color:var(--ink);border-color:var(--ink-2)}
+.row .edit-actions button.del:hover{color:var(--danger);border-color:var(--danger)}
+body[data-editing="1"] .row .edit-actions{display:inline-flex}
+body[data-editing="1"] .row .go{display:none}
+body[data-editing="1"] .row .title::after{content:none}
+.flat .row .cat{display:inline-block}
+.empty{padding:48px 0;text-align:center;color:var(--muted)}
+
+/* editor panel */
+.panel{
+  margin-top:20px;
+  background:var(--bg-2);border:1px solid var(--line-2);border-radius:8px;
+  padding:18px 20px;
+}
+.panel h3{margin:0 0 12px;font-size:14px;letter-spacing:.06em;color:var(--ink-2);font-weight:700}
+.form{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+.field{display:flex;flex-direction:column;gap:4px}
+.field label{font-size:11.5px;letter-spacing:.08em;color:var(--muted);font-weight:500}
+.field input,.field select{
+  height:38px;border:1px solid var(--line-2);border-radius:6px;background:var(--bg);padding:0 10px;
+}
+.field input:focus,.field select:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px var(--accent-soft)}
+.f-title{grid-column:span 7}.f-emoji{grid-column:span 2}.f-cat{grid-column:span 3}
+.f-url{grid-column:span 7}.f-note{grid-column:span 5}
+.form-actions{grid-column:1/-1;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.form-actions .err{color:var(--danger);font-size:13px}
+@media (max-width:640px){
+  .f-title,.f-emoji,.f-cat,.f-url,.f-note{grid-column:1/-1}
+  .f-emoji{grid-column:span 4}.f-cat{grid-column:span 8}
+  .row{grid-template-columns:32px minmax(0,1fr);grid-template-areas:"ico main" "ico meta"}
+  .row .meta{justify-content:flex-start}
+  .section-h .hint{margin-left:0;width:100%}
+}
+
+/* save bar */
+.savebar{
+  position:fixed;left:0;right:0;bottom:0;z-index:20;
+  display:flex;justify-content:center;padding:12px 16px;
+  pointer-events:none;
+}
+.savebar .inner{
+  pointer-events:auto;
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  background:var(--ink);color:var(--bg);
+  border-radius:10px;padding:10px 14px 10px 18px;box-shadow:var(--shadow);
+  max-width:100%;
+}
+.savebar .inner .n{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.savebar .btn{height:34px}
+.savebar .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.savebar .btn.ghost{color:var(--bg);opacity:.85}
+.toast{
+  position:fixed;left:50%;bottom:84px;transform:translateX(-50%);z-index:30;
+  background:var(--bg-2);border:1px solid var(--line-2);color:var(--ink);
+  padding:10px 16px;border-radius:8px;box-shadow:var(--shadow);font-size:13.5px;max-width:calc(100% - 32px);
+}
+.toast.warn{background:var(--warn-soft);border-color:var(--warn);color:var(--ink)}
+.readonly{font-size:12.5px;color:var(--muted)}
+.foot{margin-top:40px;font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;display:flex;flex-wrap:wrap;gap:8px 20px}
+@media (prefers-reduced-motion:no-preference){
+  .row{transition:background .12s ease}
+  .chip,.btn{transition:background .12s ease,border-color .12s ease,color .12s ease}
+}
+</style>
+
+<div id="root" class="wrap"></div>
+
+<script id="pages-data" type="application/json">
+{
+ "categories": [
+  {"key":"plan","label":"経営・企画","hint":"方針決め・組織づくり・設計書"},
+  {"key":"ledger","label":"台帳・ルール","hint":"日々書き足していく記録と決まりごと"},
+  {"key":"utage","label":"UTAGE・受付運用","hint":"UTAGEの手順とイベント当日の運用"},
+  {"key":"bot","label":"Discord・ボット","hint":"秘書ボットや自動報告の設計・開通手順"},
+  {"key":"report","label":"レポート・数値","hint":"LINE登録数や月次の振り返り"},
+  {"key":"content","label":"発信・コンテンツ","hint":"投稿文・配信文・発信の裏方"},
+  {"key":"design","label":"ファネル・LPデザイン案","hint":"見た目の比較検討用。決まった案は上の分類へ"}
+ ],
+ "pages": [
+  {"id":"p01","title":"企画の選別台","url":"https://claude.ai/code/artifact/7848bc23-1b97-4ce8-a743-a7f8966247fb","emoji":"🎯","cat":"plan","updated":"2026-09-11","note":"企画案をふるいにかける"},
+  {"id":"p02","title":"組織化チーム化チェックリスト","url":"https://claude.ai/code/artifact/4842300a-113b-4966-9ecf-cd162288ba83","emoji":"✅","cat":"plan","updated":"2026-09-12","note":"チーム化の進み具合を確認"},
+  {"id":"p03","title":"Phase 1 設計書｜UTAGE×AI マーケ責任者オフィス","url":"https://claude.ai/code/artifact/ba0ef90e-b9cc-4208-bc31-dc1188873031","emoji":"🏭","cat":"plan","updated":"2026-07-24","note":"オフィス構想の初期設計"},
+  {"id":"p04","title":"オフ会ナレッジ台帳","url":"https://claude.ai/code/artifact/16bde990-a47c-4987-8fe2-c6028fdbac68","emoji":"🎤","cat":"ledger","updated":"2026-09-11","note":"オフ会で得た知見の記録"},
+  {"id":"p05","title":"X切り抜き台帳","url":"https://claude.ai/code/artifact/49db0dca-3d92-4878-9880-d1761239b95b","emoji":"✂️","cat":"ledger","updated":"2026-09-09","note":"切り抜き投稿のストック"},
+  {"id":"p06","title":"映像指示の要素表","url":"https://claude.ai/code/artifact/1d7cfe8b-a4a0-4049-a892-de847d42c47d","emoji":"📐","cat":"ledger","updated":"2026-08-27","note":"編集者へ渡す指示の項目"},
+  {"id":"p07","title":"LINEシナリオ設計ルール集","url":"https://claude.ai/code/artifact/00a010aa-cda7-47f1-9a16-4f56333cc671","emoji":"📐","cat":"ledger","updated":"2026-07-26","note":"配信シナリオを組むときの決まり"},
+  {"id":"p08","title":"UTAGEをAIに任せる5段階","url":"https://claude.ai/code/artifact/2fa433c8-ea01-42ed-a1f7-2a05ce6ea364","emoji":"🪜","cat":"utage","updated":"2026-09-09","note":"自動化の段階と進め方"},
+  {"id":"p09","title":"UTAGE QRチケット受付","url":"https://claude.ai/code/artifact/2eb9f66b-11fa-4883-bec0-7d174791b298","emoji":"🎟️","cat":"utage","updated":"2026-08-24","note":"QRで入場を捌く仕組み"},
+  {"id":"p10","title":"当日の受付のやり方","url":"https://claude.ai/code/artifact/abe38db3-3938-42bc-8b12-a32e96913334","emoji":"📱","cat":"utage","updated":"2026-08-24","note":"受付担当向けの手順"},
+  {"id":"p11","title":"Discord AIディレクター設計","url":"https://claude.ai/code/artifact/e9748b29-f775-4b42-8b2c-038ec4fb39b5","emoji":"🎬","cat":"bot","updated":"2026-09-01","note":"Discord上で指示を回す設計"},
+  {"id":"p12","title":"セミナーボット開通手順","url":"https://claude.ai/code/artifact/ba512161-5331-4d7e-acd1-80ce15783116","emoji":"🔌","cat":"bot","updated":"2026-08-26","note":"ボットを動かすまでの手順"},
+  {"id":"p13","title":"JVセミナー週次報告ボット","url":"https://claude.ai/code/artifact/bcb68a21-df1e-46a1-8027-af8380e3acad","emoji":"🗓️","cat":"bot","updated":"2026-08-26","note":"週次で数字を自動報告"},
+  {"id":"p14","title":"イングリッシュおさる｜UTAGE LINE登録数","url":"https://claude.ai/code/artifact/7a04bd3b-1a5f-44c1-90ba-451c79fe3425","emoji":"🐵","cat":"report","updated":"2026-08-28","note":"LINE登録数の推移"},
+  {"id":"p15","title":"Brain新プロジェクト LINE登録数","url":"https://claude.ai/code/artifact/c885e8df-c13d-4740-89dc-7dcc132a2887","emoji":"📈","cat":"report","updated":"2026-08-28","note":"LINE登録数の推移"},
+  {"id":"p16","title":"エバーファネル月次レポート","url":"https://claude.ai/code/artifact/598903d7-9466-4ebc-8e81-9abdf2ae13f3","emoji":"📉","cat":"report","updated":"2026-08-28","note":"エバーグリーン配信の月次まとめ"},
+  {"id":"p17","title":"参考動画 vs 現状 比較レポート","url":"https://claude.ai/code/artifact/8bda0b22-f2f5-4c80-83aa-0c3dfd42171f","emoji":"📊","cat":"report","updated":"2026-08-11","note":"参考動画との差分整理"},
+  {"id":"p18","title":"AI発信ウラカタ","url":"https://claude.ai/code/artifact/fd8fa1b4-6753-404c-9800-d615b976eed8","emoji":"✍️","cat":"content","updated":"2026-08-26","note":"発信を裏で支える仕組み"},
+  {"id":"p19","title":"tomomiさん｜Threads投稿イメージ（ツリーA）","url":"https://claude.ai/code/artifact/856b0904-3eea-4a62-a27f-d09484426020","emoji":"🌿","cat":"content","updated":"2026-08-14","note":"Threads投稿の見本"},
+  {"id":"p20","title":"エバー配信サンプル_レビュー用","url":"https://claude.ai/code/artifact/4b69b248-37e3-438d-9114-38f7c90ee78a","emoji":"🔯","cat":"content","updated":"2026-08-04","note":"配信文のレビュー用サンプル"},
+  {"id":"p21","title":"まぎーコンシェルジュ オフィス デザイン案5選","url":"https://claude.ai/code/artifact/571a9492-0c34-44dd-ac6d-b562293934f6","emoji":"🍃","cat":"design","updated":"2026-08-10","note":"オフィス画面の見た目5案"},
+  {"id":"p22","title":"ファネル診断結果（シンプル版・3案比較）","url":"https://claude.ai/code/artifact/8ba4b80e-8360-4eda-bfd4-64c9dea6230e","emoji":"🧭","cat":"design","updated":"2026-08-07","note":"診断結果ページ 3案"},
+  {"id":"p23","title":"ファネル診断結果（オフィス版デザイン案）","url":"https://claude.ai/code/artifact/8e5cc474-58aa-48e7-a8c2-d24a16f434c4","emoji":"🧭","cat":"design","updated":"2026-08-07","note":"診断結果ページ オフィス版"},
+  {"id":"p24","title":"ファネル診断結果（サンプル）","url":"https://claude.ai/code/artifact/8dfea383-611e-43e2-91c2-e2a08128509a","emoji":"🧭","cat":"design","updated":"2026-08-07","note":"診断結果ページ 最初の案"},
+  {"id":"p25","title":"ファネル選択ページ｜カードギャラリー案 5バリエーション","url":"https://claude.ai/code/artifact/3565640d-30b0-4e31-a1c0-78799e23857c","emoji":"🖼️","cat":"design","updated":"2026-08-07","note":"選択ページ カード型"},
+  {"id":"p26","title":"ファネル選択ページ｜コンパクト案 5バリエーション","url":"https://claude.ai/code/artifact/d8a43266-c43d-49cc-a4d1-5baf9b619776","emoji":"🗂️","cat":"design","updated":"2026-08-07","note":"選択ページ コンパクト型"},
+  {"id":"p27","title":"ファネル（LP）極小グリッド｜タイルデザイン 5案","url":"https://claude.ai/code/artifact/2ef9e90a-5127-4d6e-ad12-a18f600a76bb","emoji":"🍃","cat":"design","updated":"2026-08-07","note":"LP一覧 タイル型"},
+  {"id":"p28","title":"ファネル（LP）極小グリッド｜森の仲間たち世界観 5案","url":"https://claude.ai/code/artifact/aa1f5da5-0dc6-4b8a-9557-4c8799df38f1","emoji":"🐿️","cat":"design","updated":"2026-08-07","note":"LP一覧 森の世界観"},
+  {"id":"p29","title":"ファネル（LP）極小グリッド｜洗練SaaS系リファイン案","url":"https://claude.ai/code/artifact/8755db23-2f55-4881-bd1f-d5ae47b599f6","emoji":"📄","cat":"design","updated":"2026-08-07","note":"LP一覧 SaaS風"},
+  {"id":"p30","title":"ファネル（LP）極小グリッド｜どうぶつの森テイスト案","url":"https://claude.ai/code/artifact/c68181a4-11de-40e4-a54a-c2dd2cf1930f","emoji":"🍂","cat":"design","updated":"2026-08-07","note":"LP一覧 どうぶつの森風"},
+  {"id":"p31","title":"ファネル（LP）極小グリッド｜どうぶつの森テイスト 10案","url":"https://claude.ai/code/artifact/346a19af-e823-4072-b32d-8a1f3c8b297a","emoji":"🏝️","cat":"design","updated":"2026-08-07","note":"LP一覧 どうぶつの森風 10案"}
+ ]
+}
+</script>
+
+<script id="app">
+(function () {
+  'use strict';
+
+  var TITLE = 'ページ総覧';
+  var FONT_LINK = '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Old+Mincho:wght@700&family=IBM+Plex+Mono:wght@400;500&display=swap">';
+
+  var dataEl = document.getElementById('pages-data');
+  var state = JSON.parse(dataEl.textContent);
+  var savedJSON = JSON.stringify(state);
+
+  var root = document.getElementById('root');
+  var ui = { q: '', cat: 'all', view: 'grouped' };
+  var editing = false;
+  var editingId = null;
+  var artifactCap = null;    // resolved capability namespace, or null
+  var readOnly = false;
+
+  /* ---------- helpers ---------- */
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+  function catOf(key) {
+    for (var i = 0; i < state.categories.length; i++) {
+      if (state.categories[i].key === key) return state.categories[i];
+    }
+    return { key: key, label: key, hint: '' };
+  }
+  function today() {
+    var d = new Date();
+    var m = String(d.getMonth() + 1).padStart(2, '0');
+    var day = String(d.getDate()).padStart(2, '0');
+    return d.getFullYear() + '-' + m + '-' + day;
+  }
+  function byUpdatedDesc(a, b) {
+    return (b.updated || '').localeCompare(a.updated || '') || a.title.localeCompare(b.title, 'ja');
+  }
+  function latestUpdate(pages) {
+    var t = '';
+    pages.forEach(function (p) { if ((p.updated || '') > t) t = p.updated; });
+    return t || '—';
+  }
+  function matches(p, q) {
+    if (!q) return true;
+    var hay = (p.title + ' ' + (p.note || '') + ' ' + catOf(p.cat).label).toLowerCase();
+    return q.toLowerCase().split(/\s+/).every(function (w) { return !w || hay.indexOf(w) >= 0; });
+  }
+  function dirty() { return JSON.stringify(state) !== savedJSON; }
+  function pendingCount() {
+    var a = JSON.parse(savedJSON).pages, b = state.pages, n = 0;
+    var am = {}, bm = {};
+    a.forEach(function (p) { am[p.id] = JSON.stringify(p); });
+    b.forEach(function (p) { bm[p.id] = JSON.stringify(p); });
+    Object.keys(am).forEach(function (k) { if (bm[k] !== am[k]) n++; });
+    Object.keys(bm).forEach(function (k) { if (!(k in am)) n++; });
+    return n;
+  }
+
+  /* ---------- markup ---------- */
+  function rowHTML(p, showCat) {
+    var c = catOf(p.cat);
+    return '<li class="row" data-id="' + esc(p.id) + '">' +
+      '<span class="ico" aria-hidden="true">' + esc(p.emoji || '📄') + '</span>' +
+      '<span class="main">' +
+        '<a class="title" href="' + esc(p.url) + '" target="_blank" rel="noopener">' + esc(p.title) + '</a>' +
+        (p.note ? '<span class="note">' + esc(p.note) + '</span>' : '') +
+      '</span>' +
+      '<span class="meta">' +
+        (showCat ? '<span class="cat">' + esc(c.label) + '</span>' : '') +
+        '<span class="date">' + esc(p.updated || '') + '</span>' +
+        '<span class="go" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg></span>' +
+        '<span class="edit-actions">' +
+          '<button type="button" class="ed" data-act="edit" data-id="' + esc(p.id) + '" title="編集" aria-label="編集"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11.5 2.5l2 2L5 13H3v-2z"/></svg></button>' +
+          '<button type="button" class="del" data-act="del" data-id="' + esc(p.id) + '" title="削除" aria-label="削除"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></button>' +
+        '</span>' +
+      '</span>' +
+    '</li>';
+  }
+
+  function listHTML(st, f) {
+    var pages = st.pages.filter(function (p) {
+      return matches(p, f.q) && (f.cat === 'all' || p.cat === f.cat);
+    });
+    if (!pages.length) {
+      return '<p class="empty">該当するページがありません。</p>';
+    }
+    if (f.view === 'flat') {
+      return '<section class="section flat"><div class="section-h"><h2>更新が新しい順</h2><span class="count">' + pages.length + '</span></div>' +
+        '<ul class="rows">' + pages.slice().sort(byUpdatedDesc).map(function (p) { return rowHTML(p, true); }).join('') + '</ul></section>';
+    }
+    var out = '';
+    st.categories.forEach(function (c) {
+      var rows = pages.filter(function (p) { return p.cat === c.key; }).sort(byUpdatedDesc);
+      if (!rows.length) return;
+      out += '<section class="section" id="cat-' + esc(c.key) + '">' +
+        '<div class="section-h"><h2>' + esc(c.label) + '</h2><span class="count">' + rows.length + '</span>' +
+        (c.hint ? '<span class="hint">' + esc(c.hint) + '</span>' : '') + '</div>' +
+        '<ul class="rows">' + rows.map(function (p) { return rowHTML(p, false); }).join('') + '</ul></section>';
+    });
+    // pages whose category no longer exists
+    var orphans = pages.filter(function (p) { return !st.categories.some(function (c) { return c.key === p.cat; }); });
+    if (orphans.length) {
+      out += '<section class="section"><div class="section-h"><h2>未分類</h2><span class="count">' + orphans.length + '</span></div>' +
+        '<ul class="rows">' + orphans.sort(byUpdatedDesc).map(function (p) { return rowHTML(p, false); }).join('') + '</ul></section>';
+    }
+    return out;
+  }
+
+  function chipsHTML(st, f) {
+    var counts = {};
+    st.pages.forEach(function (p) { counts[p.cat] = (counts[p.cat] || 0) + 1; });
+    var h = '<button type="button" class="chip" data-cat="all" aria-pressed="' + (f.cat === 'all') + '">すべて <em>' + st.pages.length + '</em></button>';
+    st.categories.forEach(function (c) {
+      h += '<button type="button" class="chip" data-cat="' + esc(c.key) + '" aria-pressed="' + (f.cat === c.key) + '">' + esc(c.label) + ' <em>' + (counts[c.key] || 0) + '</em></button>';
+    });
+    return h;
+  }
+
+  function catOptionsHTML(st, sel) {
+    return st.categories.map(function (c) {
+      return '<option value="' + esc(c.key) + '"' + (c.key === sel ? ' selected' : '') + '>' + esc(c.label) + '</option>';
+    }).join('');
+  }
+
+  function bodyHTML(st, f) {
+    f = f || ui;
+    return '' +
+      '<header class="head">' +
+        '<div><span class="eyebrow">Hub · 全ページの入口</span><h1>' + esc(TITLE) + '</h1></div>' +
+        '<div class="stats">' +
+          '<div><b>' + st.pages.length + '</b><span>ページ</span></div>' +
+          '<div><b>' + st.categories.length + '</b><span>分類</span></div>' +
+          '<div><b>' + esc(latestUpdate(st.pages)) + '</b><span>最終更新</span></div>' +
+        '</div>' +
+      '</header>' +
+      '<div class="tools" id="tools">' +
+        '<label class="search"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3 3"/></svg>' +
+          '<input id="q" type="search" placeholder="ページ名・メモで探す" value="' + esc(f.q) + '" autocomplete="off"></label>' +
+        '<div class="seg" role="group" aria-label="並び">' +
+          '<button type="button" data-view="grouped" aria-pressed="' + (f.view === 'grouped') + '">分類ごと</button>' +
+          '<button type="button" data-view="flat" aria-pressed="' + (f.view === 'flat') + '">更新順</button>' +
+        '</div>' +
+        '<button type="button" class="btn" id="edit-toggle" hidden>ページを追加・編集</button>' +
+        '<span class="readonly" id="readonly-note" hidden>閲覧専用</span>' +
+        '<div class="chips" id="chips">' + chipsHTML(st, f) + '</div>' +
+      '</div>' +
+      '<div class="panel" id="panel" hidden>' +
+        '<h3 id="panel-title">ページを追加</h3>' +
+        '<form class="form" id="form" autocomplete="off">' +
+          '<div class="field f-title"><label for="f-title">ページ名</label><input id="f-title" required placeholder="例：来月のキャンペーン設計"></div>' +
+          '<div class="field f-emoji"><label for="f-emoji">絵文字</label><input id="f-emoji" placeholder="📄" maxlength="4"></div>' +
+          '<div class="field f-cat"><label for="f-cat">分類</label><select id="f-cat">' + catOptionsHTML(st, st.categories[0] && st.categories[0].key) + '</select></div>' +
+          '<div class="field f-url"><label for="f-url">URL</label><input id="f-url" type="url" required placeholder="https://claude.ai/code/artifact/…"></div>' +
+          '<div class="field f-note"><label for="f-note">ひとことメモ</label><input id="f-note" placeholder="何のページか一行で"></div>' +
+          '<div class="form-actions">' +
+            '<button type="submit" class="btn primary" id="form-submit">一覧に追加</button>' +
+            '<button type="button" class="btn ghost" id="form-cancel">やめる</button>' +
+            '<span class="err" id="form-err"></span>' +
+          '</div>' +
+        '</form>' +
+      '</div>' +
+      '<main id="list">' + listHTML(st, f) + '</main>' +
+      '<footer class="foot"><span>「ページを追加・編集」から新しいページを登録すると、この一覧そのものが更新されて全員に共有されます。</span></footer>';
+  }
+
+  // Full replacement document, rendered from the same source this page was built from.
+  function pageSource(st) {
+    var css = document.getElementById('css').textContent;
+    var js = document.getElementById('app').textContent;
+    var json = JSON.stringify(st, null, 1).replace(/</g, '\\u003c');
+    var clean = { q: '', cat: 'all', view: 'grouped' };
+    return '<!doctype html>\n<html lang="ja">\n<head>\n' +
+      '<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n' +
+      '<title>' + esc(TITLE) + '</title>\n' + FONT_LINK + '\n' +
+      '<style id="css">' + css + '</style>\n</head>\n<body>\n' +
+      '<div id="root" class="wrap">' + bodyHTML(st, clean) + '</div>\n' +
+      '<script id="pages-data" type="application/json">' + json + '</' + 'script>\n' +
+      '<script id="app">' + js + '</' + 'script>\n' +
+      '</body>\n</html>\n';
+  }
+
+  /* ---------- rendering ---------- */
+  function renderList() {
+    document.getElementById('list').innerHTML = listHTML(state, ui);
+    document.getElementById('chips').innerHTML = chipsHTML(state, ui);
+    var seg = document.querySelectorAll('.seg button');
+    for (var i = 0; i < seg.length; i++) seg[i].setAttribute('aria-pressed', String(seg[i].dataset.view === ui.view));
+    renderSaveBar();
+  }
+
+  function renderSaveBar() {
+    var bar = document.getElementById('savebar');
+    var n = dirty() ? pendingCount() : 0;
+    if (!n) { if (bar) bar.remove(); return; }
+    if (!bar) {
+      bar = document.createElement('div');
+      bar.id = 'savebar';
+      bar.className = 'savebar';
+      document.body.appendChild(bar);
+    }
+    bar.innerHTML = '<div class="inner"><span>未保存の変更 <span class="n">' + n + '</span> 件</span>' +
+      '<button type="button" class="btn primary" id="save">保存して公開</button>' +
+      '<button type="button" class="btn ghost" id="discard">取り消す</button></div>';
+    document.getElementById('save').addEventListener('click', save);
+    document.getElementById('discard').addEventListener('click', function () {
+      state = JSON.parse(savedJSON);
+      closeForm();
+      renderList();
+    });
+  }
+
+  var toastTimer = null;
+  function toast(msg, kind) {
+    var t = document.getElementById('toast');
+    if (!t) { t = document.createElement('div'); t.id = 'toast'; document.body.appendChild(t); }
+    t.className = 'toast' + (kind ? ' ' + kind : '');
+    t.textContent = msg;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { t.remove(); }, kind === 'warn' ? 6000 : 3500);
+  }
+
+  /* ---------- editing ---------- */
+  function setEditing(on) {
+    editing = on;
+    document.body.dataset.editing = on ? '1' : '';
+    var btn = document.getElementById('edit-toggle');
+    btn.textContent = on ? '編集を終える' : 'ページを追加・編集';
+    btn.classList.toggle('primary', on);
+    var panel = document.getElementById('panel');
+    panel.hidden = !on;
+    if (on) { openForm(null); }
+  }
+
+  function openForm(p) {
+    editingId = p ? p.id : null;
+    document.getElementById('panel-title').textContent = p ? 'ページを編集' : 'ページを追加';
+    document.getElementById('form-submit').textContent = p ? '変更を反映' : '一覧に追加';
+    document.getElementById('f-title').value = p ? p.title : '';
+    document.getElementById('f-emoji').value = p ? (p.emoji || '') : '';
+    document.getElementById('f-cat').value = p ? p.cat : (state.categories[0] && state.categories[0].key);
+    document.getElementById('f-url').value = p ? p.url : '';
+    document.getElementById('f-note').value = p ? (p.note || '') : '';
+    document.getElementById('form-err').textContent = '';
+    document.getElementById('panel').hidden = false;
+    if (p) document.getElementById('f-title').focus();
+  }
+  function closeForm() {
+    editingId = null;
+    if (editing) openForm(null);
+  }
+
+  function submitForm(e) {
+    e.preventDefault();
+    var title = document.getElementById('f-title').value.trim();
+    var url = document.getElementById('f-url').value.trim();
+    var emoji = document.getElementById('f-emoji').value.trim();
+    var cat = document.getElementById('f-cat').value;
+    var note = document.getElementById('f-note').value.trim();
+    var err = document.getElementById('form-err');
+    if (!title) { err.textContent = 'ページ名を入れてください。'; return; }
+    if (!/^https?:\/\//i.test(url)) { err.textContent = 'URLは https:// から始めてください。'; return; }
+    var dup = state.pages.filter(function (p) { return p.url === url && p.id !== editingId; })[0];
+    if (dup) { err.textContent = '同じURLが「' + dup.title + '」として登録済みです。'; return; }
+    if (editingId) {
+      state.pages.forEach(function (p) {
+        if (p.id !== editingId) return;
+        p.title = title; p.url = url; p.emoji = emoji; p.cat = cat; p.note = note;
+      });
+      toast('「' + title + '」を変更しました。保存するまで公開されません。');
+    } else {
+      var id = 'p' + Date.now().toString(36);
+      state.pages.push({ id: id, title: title, url: url, emoji: emoji, cat: cat, updated: today(), note: note });
+      toast('「' + title + '」を一覧に追加しました。保存するまで公開されません。');
+    }
+    editingId = null;
+    openForm(null);
+    renderList();
+  }
+
+  function onListClick(e) {
+    var b = e.target.closest('button[data-act]');
+    if (!b) return;
+    e.preventDefault();
+    var p = state.pages.filter(function (x) { return x.id === b.dataset.id; })[0];
+    if (!p) return;
+    if (b.dataset.act === 'edit') {
+      openForm(p);
+      document.getElementById('panel').scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    } else if (b.dataset.act === 'del') {
+      if (!window.confirm('「' + p.title + '」を一覧から外しますか？（ページ自体は消えません）')) return;
+      state.pages = state.pages.filter(function (x) { return x.id !== p.id; });
+      if (editingId === p.id) closeForm();
+      renderList();
+    }
+  }
+
+  function save() {
+    if (!artifactCap) { toast('この環境では保存できません。', 'warn'); return; }
+    var btn = document.getElementById('save');
+    btn.disabled = true; btn.textContent = '公開中…';
+    var html = pageSource(state);
+    artifactCap.publish(html).then(function () {
+      // The shell reloads this view to the new version.
+      toast('公開しました。読み込み直しています…');
+    }).catch(function (err) {
+      var code = err && err.code;
+      if (code === 'conflict') {
+        toast('別の場所で先に更新されました。最新版を読み込み直します。', 'warn');
+        return;
+      }
+      if (code === 'not_writer' || code === 'not_granted' || code === 'not_declared' || code === 'consent_required') {
+        markReadOnly();
+        toast('このページは閲覧専用のため保存できませんでした。', 'warn');
+        return;
+      }
+      btn.disabled = false; btn.textContent = '保存して公開';
+      if (code === 'rate_limited') toast('短時間に公開しすぎです。少し待ってからもう一度どうぞ。', 'warn');
+      else if (code === 'too_large') toast('ページが大きすぎて公開できません。', 'warn');
+      else toast('公開に失敗しました（' + (code || 'unknown') + '）。もう一度お試しください。', 'warn');
+    });
+  }
+
+  function markReadOnly() {
+    readOnly = true;
+    setEditing(false);
+    document.getElementById('edit-toggle').hidden = true;
+    document.getElementById('readonly-note').hidden = false;
+  }
+
+  /* ---------- boot ---------- */
+  root.innerHTML = bodyHTML(state, ui);
+
+  document.getElementById('q').addEventListener('input', function (e) { ui.q = e.target.value; renderList(); });
+  document.getElementById('chips').addEventListener('click', function (e) {
+    var c = e.target.closest('.chip'); if (!c) return;
+    ui.cat = c.dataset.cat; renderList();
+  });
+  document.querySelector('.seg').addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-view]'); if (!b) return;
+    ui.view = b.dataset.view; renderList();
+  });
+  document.getElementById('list').addEventListener('click', onListClick);
+  document.getElementById('form').addEventListener('submit', submitForm);
+  document.getElementById('form-cancel').addEventListener('click', function () { closeForm(); });
+  document.getElementById('edit-toggle').addEventListener('click', function () { setEditing(!editing); });
+
+  // Light up editing only where this view can publish a new version of itself.
+  if (window.claude && typeof window.claude.use === 'function') {
+    window.claude.use('artifact').then(function (cap) {
+      if (!cap) return;
+      artifactCap = cap;
+      if (!readOnly) document.getElementById('edit-toggle').hidden = false;
+    }).catch(function () {});
+  }
+})();
+</script>
