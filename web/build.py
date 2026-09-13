@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """web/hub.html（アーティファクト用の本文だけのファイル）を、
-Xserver などに置ける完全なHTML（web/dist/index.html）に変換する。"""
+Xserver と同じ配置の完全なHTML（public_html/hub/index.html）に変換する。"""
 import pathlib
 
 here = pathlib.Path(__file__).resolve().parent
@@ -15,7 +15,7 @@ doc = (
     "<meta name=\"robots\" content=\"noindex, nofollow\">\n"
     + head.strip() + "\n</head>\n<body>" + body.rstrip() + "\n</body>\n</html>\n"
 )
-out = here / "dist" / "index.html"
-out.parent.mkdir(exist_ok=True)
+out = here.parent / "public_html" / "hub" / "index.html"
+out.parent.mkdir(parents=True, exist_ok=True)
 out.write_text(doc, encoding="utf-8")
 print(f"wrote {out} ({len(doc.encode('utf-8'))} bytes)")

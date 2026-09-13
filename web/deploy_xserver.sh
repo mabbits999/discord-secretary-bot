@@ -39,10 +39,10 @@ esac
 
 python3 "$here/build.py"
 
-echo "upload: $here/dist/index.html -> ftp://$FTP_HOST$remote_dir/index.html"
+echo "upload: $here/../public_html/hub/index.html -> ftp://$FTP_HOST$remote_dir/index.html"
 if [[ -n "$dry" ]]; then echo "(dry-run: 送信しません)"; exit 0; fi
 
 curl --ssl --ftp-create-dirs -sS --fail \
   --netrc-file <(printf 'machine %s login %s password %s\n' "$FTP_HOST" "$FTP_USER" "$FTP_PASS") \
-  -T "$here/dist/index.html" "ftp://$FTP_HOST$remote_dir/index.html"
+  -T "$here/../public_html/hub/index.html" "ftp://$FTP_HOST$remote_dir/index.html"
 echo "done: https://mashimashi.jp${remote_dir#/mashimashi.jp/public_html}/"

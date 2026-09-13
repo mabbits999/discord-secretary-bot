@@ -148,12 +148,12 @@ KNOWLEDGE_DIR=/var/data/knowledge
 ```bash
 cp web/.deploy.env.example web/.deploy.env   # FTP_PASS を入れる（コミットされません）
 bash web/deploy_xserver.sh --dry-run          # 送信先の確認だけ
-bash web/deploy_xserver.sh                    # web/dist/index.html を生成してアップロード
+bash web/deploy_xserver.sh                    # public_html/hub/index.html を生成してアップロード
 ```
 
 ・アップロード先は `/mashimashi.jp/public_html/hub` で、`https://mashimashi.jp/hub/` で開けます
 ・Xserver のサーバーパネルでサブドメイン `hub.mashimashi.jp` を追加すると同じフォルダが `https://hub.mashimashi.jp/` になります
-・`web/build.py` だけ実行すれば `web/dist/index.html` ができるので、Xserver のファイルマネージャから手で置いても構いません
+・完成ファイルはリポジトリの `public_html/hub/index.html`（Xserver と同じ配置）。Xserver のファイルマネージャから手で置いても構いません
 ・Xserver 上の版は閲覧専用です（追加・編集は公開版のアーティファクトで行い、再アップロードで反映）
 
 ## 8. knowledge の使い方
