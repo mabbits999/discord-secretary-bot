@@ -143,6 +143,19 @@ KNOWLEDGE_DIR=/var/data/knowledge
 ・追加・編集は公開版の「追加・編集」ボタンから行うと、一覧そのものが新しい版として公開されます（種類: Webページ / GitHub / Vercel / Supabase / その他）
 ・登録データはファイル内の `pages-data` ブロック（JSON）にあり、手で直しても構いません
 
+### mashimashi.jp（Xserver）に置く
+
+```bash
+cp web/.deploy.env.example web/.deploy.env   # FTP_PASS を入れる（コミットされません）
+bash web/deploy_xserver.sh --dry-run          # 送信先の確認だけ
+bash web/deploy_xserver.sh                    # web/dist/index.html を生成してアップロード
+```
+
+・アップロード先は `/mashimashi.jp/public_html/hub` で、`https://mashimashi.jp/hub/` で開けます
+・Xserver のサーバーパネルでサブドメイン `hub.mashimashi.jp` を追加すると同じフォルダが `https://hub.mashimashi.jp/` になります
+・`web/build.py` だけ実行すれば `web/dist/index.html` ができるので、Xserver のファイルマネージャから手で置いても構いません
+・Xserver 上の版は閲覧専用です（追加・編集は公開版のアーティファクトで行い、再アップロードで反映）
+
 ## 8. knowledge の使い方
 
 `knowledge/` に `.txt` や `.md` を入れてください。
