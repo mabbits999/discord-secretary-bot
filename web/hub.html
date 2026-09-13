@@ -373,7 +373,17 @@ body[data-editing="1"] .row .title::after{content:none}
   {"id":"v15","kind":"vercel","title":"daily-research","url":"https://vercel.com/masashis-projects-bdd9496a/daily-research","live":"https://daily-research-masashis-projects-bdd9496a.vercel.app","repo":"daily-research","updated":"2026-05-16","status":"error","note":"最新デプロイが失敗中"},
 
   {"id":"s01","kind":"supabase","title":"automation-dashboard","url":"https://supabase.com/dashboard/project/exyajpkwtwauipimalpk","updated":"2026-05-18","note":"東京リージョン / Postgres 17 / 稼働中"},
-  {"id":"s02","kind":"supabase","title":"osaru-line-secretary","url":"https://supabase.com/dashboard/project/npnsndtppisetekamzgo","updated":"2026-01-24","note":"東京リージョン / Postgres 17 / 稼働中"}
+  {"id":"s02","kind":"supabase","title":"osaru-line-secretary","url":"https://supabase.com/dashboard/project/npnsndtppisetekamzgo","updated":"2026-01-24","note":"東京リージョン / Postgres 17 / 稼働中"},
+
+  {"id":"x01","kind":"xserver","title":"lp-skill","url":"https://lp-skill.mashimashi.jp/","updated":"","note":"会員サイト（まーしー式LP）。public_html/lp-skill。上書き厳禁"},
+  {"id":"x02","kind":"xserver","title":"ai-skill","url":"https://mashimashi.jp/ai-skill/","updated":"","note":"public_html/ai-skill"},
+  {"id":"x03","kind":"xserver","title":"osaru-daihon","url":"https://mashimashi.jp/osaru-daihon/","updated":"","note":"台本。public_html/osaru-daihon"},
+  {"id":"x04","kind":"xserver","title":"samune","url":"https://mashimashi.jp/samune/","updated":"","note":"サムネイル。public_html/samune"},
+  {"id":"x05","kind":"xserver","title":"line-secretary","url":"https://mashimashi.jp/line-secretary/","updated":"","note":"LINE秘書。public_html/line-secretary"},
+  {"id":"x06","kind":"xserver","title":"check","url":"https://mashimashi.jp/check/","updated":"","note":"public_html/check"},
+  {"id":"x07","kind":"xserver","title":"utage","url":"https://mashimashi.jp/utage/","updated":"","note":"UTAGE関連。public_html/utage"},
+  {"id":"x08","kind":"xserver","title":"おさる進捗レポート 2026-09-13","url":"https://mashimashi.jp/osaru-progress-report-20260913.html","updated":"2026-09-13","note":"public_html 直下の単体HTML"},
+  {"id":"x09","kind":"xserver","title":"hub（このページ）","url":"https://mashimashi.jp/hub/","updated":"2026-09-13","note":"ページ総覧の mashimashi.jp 版。アップロード後に開けます"}
  ]
 }
 </script>
@@ -391,6 +401,7 @@ body[data-editing="1"] .row .title::after{content:none}
     { key: 'repo',     label: 'GitHub',   section: 'GitHub リポジトリ', emoji: '⌥', glyph: true,  hint: 'コードの置き場所。日付は最終プッシュ',           dateLabel: '最終プッシュ' },
     { key: 'vercel',   label: 'Vercel',   section: 'Vercel',           emoji: '▲', glyph: true,  hint: 'デプロイ済みサイト。名前で本番、右のボタンで管理画面', dateLabel: '更新' },
     { key: 'supabase', label: 'Supabase', section: 'Supabase',         emoji: '⛁', glyph: true,  hint: 'データベース。管理画面へ',                        dateLabel: '作成' },
+    { key: 'xserver',  label: 'mashimashi.jp', section: 'mashimashi.jp（Xserver）', emoji: '⌂', glyph: true, hint: 'Xserver の public_html に置いてあるサイト。サブドメインがあれば 名前.mashimashi.jp でも開けます', dateLabel: '更新' },
     { key: 'link',     label: 'その他',   section: 'その他のリンク',    emoji: '🔗', glyph: false, hint: '手入力で足したリンク（Render、Notion、スプレッドシートなど）', dateLabel: '追加' }
   ];
 
@@ -589,14 +600,14 @@ body[data-editing="1"] .row .title::after{content:none}
   function bodyHTML(st, f) {
     f = f || ui;
     var counts = countBy(st.pages, kindKey);
-    var deploy = (counts.vercel || 0) + (counts.supabase || 0);
+    var deploy = (counts.vercel || 0) + (counts.supabase || 0) + (counts.xserver || 0);
     return '' +
       '<header class="head">' +
         '<div><span class="eyebrow">Hub · 全部の入口</span><h1>' + esc(TITLE) + '</h1></div>' +
         '<div class="stats">' +
           '<div><b>' + (counts.page || 0) + '</b><span>Webページ</span></div>' +
           '<div><b>' + (counts.repo || 0) + '</b><span>リポジトリ</span></div>' +
-          '<div><b>' + deploy + '</b><span>デプロイ・DB</span></div>' +
+          '<div><b>' + deploy + '</b><span>サイト・DB</span></div>' +
           (counts.link ? '<div><b>' + counts.link + '</b><span>その他</span></div>' : '') +
           '<div><b>' + esc(latestUpdate(st.pages)) + '</b><span>最終更新</span></div>' +
         '</div>' +
@@ -632,7 +643,7 @@ body[data-editing="1"] .row .title::after{content:none}
         '</form>' +
       '</div>' +
       '<main id="list">' + listHTML(st, f) + '</main>' +
-      '<footer class="foot"><span>「追加・編集」から登録・修正すると、この一覧そのものが新しい版として公開されます。</span><span>GitHub・Vercel・Supabase の一覧は 2026-09-13 時点の取得結果です。</span></footer>';
+      '<footer class="foot"><span>「追加・編集」から登録・修正すると、この一覧そのものが新しい版として公開されます。</span><span>GitHub・Vercel・Supabase・mashimashi.jp の一覧は 2026-09-13 時点の内容です。</span></footer>';
   }
 
   // Full replacement document, rendered from the same source this page was built from.
@@ -711,7 +722,7 @@ body[data-editing="1"] .row .title::after{content:none}
     document.getElementById('f-cat-wrap').hidden = kind !== 'page';
     document.getElementById('f-live-wrap').hidden = kind !== 'vercel';
     var lbl = document.getElementById('f-url-label');
-    lbl.textContent = kind === 'vercel' ? 'Vercel 管理画面のURL' : (kind === 'repo' ? 'GitHub のURL' : (kind === 'supabase' ? 'Supabase 管理画面のURL' : 'URL'));
+    lbl.textContent = kind === 'vercel' ? 'Vercel 管理画面のURL' : (kind === 'repo' ? 'GitHub のURL' : (kind === 'supabase' ? 'Supabase 管理画面のURL' : (kind === 'xserver' ? 'mashimashi.jp のURL' : 'URL')));
   }
 
   function openForm(p) {
