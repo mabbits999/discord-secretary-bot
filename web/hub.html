@@ -111,7 +111,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 .tools{
   position:sticky;top:0;z-index:5;
   background:var(--bg);
-  padding-block:14px 12px;
+  padding-block:14px 0;
   border-bottom:1px solid var(--line);
   display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;
 }
@@ -141,7 +141,19 @@ button,input,select,textarea{font:inherit;color:inherit}
 .btn.danger{color:var(--danger)}
 .btn:disabled{opacity:.5;cursor:default}
 
-.chips{display:flex;flex-wrap:wrap;gap:6px;width:100%}
+/* kind tabs */
+.tabs{display:flex;flex-wrap:wrap;gap:0 4px;width:100%;margin-top:2px}
+.tab{
+  border:0;border-bottom:2px solid transparent;background:transparent;
+  padding:8px 10px 10px;font-size:13.5px;cursor:pointer;color:var(--ink-2);
+  display:inline-flex;align-items:center;gap:6px;margin-bottom:-1px;
+}
+.tab em{font-style:normal;font-family:var(--font-mono);font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.tab:hover{color:var(--ink)}
+.tab[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--ink);font-weight:700}
+.tab[aria-pressed="true"] em{color:var(--ink-2)}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px;width:100%;padding-bottom:12px}
 .chip{
   border:1px solid var(--line);background:transparent;border-radius:999px;
   padding:4px 11px;font-size:12.5px;cursor:pointer;color:var(--ink-2);
@@ -151,13 +163,21 @@ button,input,select,textarea{font:inherit;color:inherit}
 .chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
 .chip[aria-pressed="true"] em{color:var(--bg);opacity:.75}
 
-/* sections & rows */
-.section{padding-block:28px 8px}
+/* groups, sections & rows */
+.group{padding-top:34px}
+.group-h{
+  display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+  padding-bottom:10px;border-bottom:2px solid var(--ink);
+}
+.group-h h2{margin:0;font-family:var(--font-display);font-size:22px;font-weight:700;letter-spacing:.03em}
+.group-h .count{font-family:var(--font-mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.group-h .hint{font-size:12.5px;color:var(--muted);margin-left:auto}
+.section{padding-block:22px 4px}
 .section-h{
   display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
-  padding-bottom:8px;border-bottom:1px solid var(--ink);
+  padding-bottom:6px;border-bottom:1px solid var(--ink);
 }
-.section-h h2{margin:0;font-size:17px;font-weight:700;letter-spacing:.02em}
+.section-h h3{margin:0;font-size:16px;font-weight:700;letter-spacing:.02em}
 .section-h .count{font-family:var(--font-mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
 .section-h .hint{font-size:12.5px;color:var(--muted);margin-left:auto}
 .rows{list-style:none;margin:0;padding:0}
@@ -171,6 +191,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 }
 .row:hover{background:var(--bg-3)}
 .row .ico{grid-area:ico;font-size:22px;line-height:1;text-align:center;filter:saturate(.9)}
+.row .ico.glyph{font-size:16px;font-weight:700;color:var(--ink-2)}
 .row .main{grid-area:main;min-width:0}
 .row .title{
   display:block;font-weight:500;text-decoration:none;font-size:15px;line-height:1.4;
@@ -180,7 +201,15 @@ button,input,select,textarea{font:inherit;color:inherit}
 .row .title::after{content:"";position:absolute;inset:0}
 .row .note{display:block;font-size:12.5px;color:var(--muted);margin-top:2px;overflow-wrap:anywhere}
 .row .meta{grid-area:meta;display:flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
-.row .cat{font-family:var(--font-body);font-size:11.5px;color:var(--ink-2);background:var(--bg-3);border-radius:4px;padding:2px 7px;display:none}
+.row .tag{font-family:var(--font-body);font-size:11.5px;color:var(--ink-2);background:var(--bg-3);border-radius:4px;padding:2px 7px}
+.row .tag.pub{color:var(--accent);background:var(--accent-soft)}
+.row .tag.err{color:var(--warn);background:var(--warn-soft)}
+.row .sub{
+  position:relative;z-index:1;
+  font-family:var(--font-body);font-size:12px;color:var(--ink-2);text-decoration:none;
+  border:1px solid var(--line-2);border-radius:4px;padding:2px 8px;background:var(--bg-2);
+}
+.row .sub:hover{color:var(--accent);border-color:var(--accent)}
 .row .go{color:var(--muted);display:inline-flex}
 .row .edit-actions{display:none;gap:4px;position:relative;z-index:1}
 .row .edit-actions button{
@@ -192,7 +221,6 @@ button,input,select,textarea{font:inherit;color:inherit}
 body[data-editing="1"] .row .edit-actions{display:inline-flex}
 body[data-editing="1"] .row .go{display:none}
 body[data-editing="1"] .row .title::after{content:none}
-.flat .row .cat{display:inline-block}
 .empty{padding:48px 0;text-align:center;color:var(--muted)}
 
 /* editor panel */
@@ -209,16 +237,18 @@ body[data-editing="1"] .row .title::after{content:none}
   height:38px;border:1px solid var(--line-2);border-radius:6px;background:var(--bg);padding:0 10px;
 }
 .field input:focus,.field select:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px var(--accent-soft)}
-.f-title{grid-column:span 7}.f-emoji{grid-column:span 2}.f-cat{grid-column:span 3}
-.f-url{grid-column:span 7}.f-note{grid-column:span 5}
+.f-kind{grid-column:span 3}.f-title{grid-column:span 7}.f-emoji{grid-column:span 2}
+.f-url{grid-column:span 7}.f-cat{grid-column:span 5}.f-live{grid-column:span 5}
+.f-note{grid-column:span 12}
 .form-actions{grid-column:1/-1;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .form-actions .err{color:var(--danger);font-size:13px}
+.form-actions .help{color:var(--muted);font-size:12.5px}
 @media (max-width:640px){
-  .f-title,.f-emoji,.f-cat,.f-url,.f-note{grid-column:1/-1}
-  .f-emoji{grid-column:span 4}.f-cat{grid-column:span 8}
+  .f-kind,.f-title,.f-emoji,.f-cat,.f-url,.f-live,.f-note{grid-column:1/-1}
+  .f-kind{grid-column:span 8}.f-emoji{grid-column:span 4}
   .row{grid-template-columns:32px minmax(0,1fr);grid-template-areas:"ico main" "ico meta"}
-  .row .meta{justify-content:flex-start}
-  .section-h .hint{margin-left:0;width:100%}
+  .row .meta{justify-content:flex-start;flex-wrap:wrap;white-space:normal}
+  .group-h .hint,.section-h .hint{margin-left:0;width:100%}
 }
 
 /* save bar */
@@ -248,7 +278,7 @@ body[data-editing="1"] .row .title::after{content:none}
 .foot{margin-top:40px;font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;display:flex;flex-wrap:wrap;gap:8px 20px}
 @media (prefers-reduced-motion:no-preference){
   .row{transition:background .12s ease}
-  .chip,.btn{transition:background .12s ease,border-color .12s ease,color .12s ease}
+  .chip,.btn,.tab{transition:background .12s ease,border-color .12s ease,color .12s ease}
 }
 </style>
 
@@ -266,37 +296,84 @@ body[data-editing="1"] .row .title::after{content:none}
   {"key":"design","label":"ファネル・LPデザイン案","hint":"見た目の比較検討用。決まった案は上の分類へ"}
  ],
  "pages": [
-  {"id":"p01","title":"企画の選別台","url":"https://claude.ai/code/artifact/7848bc23-1b97-4ce8-a743-a7f8966247fb","emoji":"🎯","cat":"plan","updated":"2026-09-11","note":"企画案をふるいにかける"},
-  {"id":"p02","title":"組織化チーム化チェックリスト","url":"https://claude.ai/code/artifact/4842300a-113b-4966-9ecf-cd162288ba83","emoji":"✅","cat":"plan","updated":"2026-09-12","note":"チーム化の進み具合を確認"},
-  {"id":"p03","title":"Phase 1 設計書｜UTAGE×AI マーケ責任者オフィス","url":"https://claude.ai/code/artifact/ba0ef90e-b9cc-4208-bc31-dc1188873031","emoji":"🏭","cat":"plan","updated":"2026-07-24","note":"オフィス構想の初期設計"},
-  {"id":"p04","title":"オフ会ナレッジ台帳","url":"https://claude.ai/code/artifact/16bde990-a47c-4987-8fe2-c6028fdbac68","emoji":"🎤","cat":"ledger","updated":"2026-09-11","note":"オフ会で得た知見の記録"},
-  {"id":"p05","title":"X切り抜き台帳","url":"https://claude.ai/code/artifact/49db0dca-3d92-4878-9880-d1761239b95b","emoji":"✂️","cat":"ledger","updated":"2026-09-09","note":"切り抜き投稿のストック"},
-  {"id":"p06","title":"映像指示の要素表","url":"https://claude.ai/code/artifact/1d7cfe8b-a4a0-4049-a892-de847d42c47d","emoji":"📐","cat":"ledger","updated":"2026-08-27","note":"編集者へ渡す指示の項目"},
-  {"id":"p07","title":"LINEシナリオ設計ルール集","url":"https://claude.ai/code/artifact/00a010aa-cda7-47f1-9a16-4f56333cc671","emoji":"📐","cat":"ledger","updated":"2026-07-26","note":"配信シナリオを組むときの決まり"},
-  {"id":"p08","title":"UTAGEをAIに任せる5段階","url":"https://claude.ai/code/artifact/2fa433c8-ea01-42ed-a1f7-2a05ce6ea364","emoji":"🪜","cat":"utage","updated":"2026-09-09","note":"自動化の段階と進め方"},
-  {"id":"p09","title":"UTAGE QRチケット受付","url":"https://claude.ai/code/artifact/2eb9f66b-11fa-4883-bec0-7d174791b298","emoji":"🎟️","cat":"utage","updated":"2026-08-24","note":"QRで入場を捌く仕組み"},
-  {"id":"p10","title":"当日の受付のやり方","url":"https://claude.ai/code/artifact/abe38db3-3938-42bc-8b12-a32e96913334","emoji":"📱","cat":"utage","updated":"2026-08-24","note":"受付担当向けの手順"},
-  {"id":"p11","title":"Discord AIディレクター設計","url":"https://claude.ai/code/artifact/e9748b29-f775-4b42-8b2c-038ec4fb39b5","emoji":"🎬","cat":"bot","updated":"2026-09-01","note":"Discord上で指示を回す設計"},
-  {"id":"p12","title":"セミナーボット開通手順","url":"https://claude.ai/code/artifact/ba512161-5331-4d7e-acd1-80ce15783116","emoji":"🔌","cat":"bot","updated":"2026-08-26","note":"ボットを動かすまでの手順"},
-  {"id":"p13","title":"JVセミナー週次報告ボット","url":"https://claude.ai/code/artifact/bcb68a21-df1e-46a1-8027-af8380e3acad","emoji":"🗓️","cat":"bot","updated":"2026-08-26","note":"週次で数字を自動報告"},
-  {"id":"p14","title":"イングリッシュおさる｜UTAGE LINE登録数","url":"https://claude.ai/code/artifact/7a04bd3b-1a5f-44c1-90ba-451c79fe3425","emoji":"🐵","cat":"report","updated":"2026-08-28","note":"LINE登録数の推移"},
-  {"id":"p15","title":"Brain新プロジェクト LINE登録数","url":"https://claude.ai/code/artifact/c885e8df-c13d-4740-89dc-7dcc132a2887","emoji":"📈","cat":"report","updated":"2026-08-28","note":"LINE登録数の推移"},
-  {"id":"p16","title":"エバーファネル月次レポート","url":"https://claude.ai/code/artifact/598903d7-9466-4ebc-8e81-9abdf2ae13f3","emoji":"📉","cat":"report","updated":"2026-08-28","note":"エバーグリーン配信の月次まとめ"},
-  {"id":"p17","title":"参考動画 vs 現状 比較レポート","url":"https://claude.ai/code/artifact/8bda0b22-f2f5-4c80-83aa-0c3dfd42171f","emoji":"📊","cat":"report","updated":"2026-08-11","note":"参考動画との差分整理"},
-  {"id":"p18","title":"AI発信ウラカタ","url":"https://claude.ai/code/artifact/fd8fa1b4-6753-404c-9800-d615b976eed8","emoji":"✍️","cat":"content","updated":"2026-08-26","note":"発信を裏で支える仕組み"},
-  {"id":"p19","title":"tomomiさん｜Threads投稿イメージ（ツリーA）","url":"https://claude.ai/code/artifact/856b0904-3eea-4a62-a27f-d09484426020","emoji":"🌿","cat":"content","updated":"2026-08-14","note":"Threads投稿の見本"},
-  {"id":"p20","title":"エバー配信サンプル_レビュー用","url":"https://claude.ai/code/artifact/4b69b248-37e3-438d-9114-38f7c90ee78a","emoji":"🔯","cat":"content","updated":"2026-08-04","note":"配信文のレビュー用サンプル"},
-  {"id":"p21","title":"まぎーコンシェルジュ オフィス デザイン案5選","url":"https://claude.ai/code/artifact/571a9492-0c34-44dd-ac6d-b562293934f6","emoji":"🍃","cat":"design","updated":"2026-08-10","note":"オフィス画面の見た目5案"},
-  {"id":"p22","title":"ファネル診断結果（シンプル版・3案比較）","url":"https://claude.ai/code/artifact/8ba4b80e-8360-4eda-bfd4-64c9dea6230e","emoji":"🧭","cat":"design","updated":"2026-08-07","note":"診断結果ページ 3案"},
-  {"id":"p23","title":"ファネル診断結果（オフィス版デザイン案）","url":"https://claude.ai/code/artifact/8e5cc474-58aa-48e7-a8c2-d24a16f434c4","emoji":"🧭","cat":"design","updated":"2026-08-07","note":"診断結果ページ オフィス版"},
-  {"id":"p24","title":"ファネル診断結果（サンプル）","url":"https://claude.ai/code/artifact/8dfea383-611e-43e2-91c2-e2a08128509a","emoji":"🧭","cat":"design","updated":"2026-08-07","note":"診断結果ページ 最初の案"},
-  {"id":"p25","title":"ファネル選択ページ｜カードギャラリー案 5バリエーション","url":"https://claude.ai/code/artifact/3565640d-30b0-4e31-a1c0-78799e23857c","emoji":"🖼️","cat":"design","updated":"2026-08-07","note":"選択ページ カード型"},
-  {"id":"p26","title":"ファネル選択ページ｜コンパクト案 5バリエーション","url":"https://claude.ai/code/artifact/d8a43266-c43d-49cc-a4d1-5baf9b619776","emoji":"🗂️","cat":"design","updated":"2026-08-07","note":"選択ページ コンパクト型"},
-  {"id":"p27","title":"ファネル（LP）極小グリッド｜タイルデザイン 5案","url":"https://claude.ai/code/artifact/2ef9e90a-5127-4d6e-ad12-a18f600a76bb","emoji":"🍃","cat":"design","updated":"2026-08-07","note":"LP一覧 タイル型"},
-  {"id":"p28","title":"ファネル（LP）極小グリッド｜森の仲間たち世界観 5案","url":"https://claude.ai/code/artifact/aa1f5da5-0dc6-4b8a-9557-4c8799df38f1","emoji":"🐿️","cat":"design","updated":"2026-08-07","note":"LP一覧 森の世界観"},
-  {"id":"p29","title":"ファネル（LP）極小グリッド｜洗練SaaS系リファイン案","url":"https://claude.ai/code/artifact/8755db23-2f55-4881-bd1f-d5ae47b599f6","emoji":"📄","cat":"design","updated":"2026-08-07","note":"LP一覧 SaaS風"},
-  {"id":"p30","title":"ファネル（LP）極小グリッド｜どうぶつの森テイスト案","url":"https://claude.ai/code/artifact/c68181a4-11de-40e4-a54a-c2dd2cf1930f","emoji":"🍂","cat":"design","updated":"2026-08-07","note":"LP一覧 どうぶつの森風"},
-  {"id":"p31","title":"ファネル（LP）極小グリッド｜どうぶつの森テイスト 10案","url":"https://claude.ai/code/artifact/346a19af-e823-4072-b32d-8a1f3c8b297a","emoji":"🏝️","cat":"design","updated":"2026-08-07","note":"LP一覧 どうぶつの森風 10案"}
+  {"id":"p01","kind":"page","title":"企画の選別台","url":"https://claude.ai/code/artifact/7848bc23-1b97-4ce8-a743-a7f8966247fb","emoji":"🎯","cat":"plan","updated":"2026-09-11","note":"企画案をふるいにかける"},
+  {"id":"p02","kind":"page","title":"組織化チーム化チェックリスト","url":"https://claude.ai/code/artifact/4842300a-113b-4966-9ecf-cd162288ba83","emoji":"✅","cat":"plan","updated":"2026-09-12","note":"チーム化の進み具合を確認"},
+  {"id":"p03","kind":"page","title":"Phase 1 設計書｜UTAGE×AI マーケ責任者オフィス","url":"https://claude.ai/code/artifact/ba0ef90e-b9cc-4208-bc31-dc1188873031","emoji":"🏭","cat":"plan","updated":"2026-07-24","note":"オフィス構想の初期設計"},
+  {"id":"p04","kind":"page","title":"オフ会ナレッジ台帳","url":"https://claude.ai/code/artifact/16bde990-a47c-4987-8fe2-c6028fdbac68","emoji":"🎤","cat":"ledger","updated":"2026-09-11","note":"オフ会で得た知見の記録"},
+  {"id":"p05","kind":"page","title":"X切り抜き台帳","url":"https://claude.ai/code/artifact/49db0dca-3d92-4878-9880-d1761239b95b","emoji":"✂️","cat":"ledger","updated":"2026-09-09","note":"切り抜き投稿のストック"},
+  {"id":"p06","kind":"page","title":"映像指示の要素表","url":"https://claude.ai/code/artifact/1d7cfe8b-a4a0-4049-a892-de847d42c47d","emoji":"📐","cat":"ledger","updated":"2026-08-27","note":"編集者へ渡す指示の項目"},
+  {"id":"p07","kind":"page","title":"LINEシナリオ設計ルール集","url":"https://claude.ai/code/artifact/00a010aa-cda7-47f1-9a16-4f56333cc671","emoji":"📐","cat":"ledger","updated":"2026-07-26","note":"配信シナリオを組むときの決まり"},
+  {"id":"p08","kind":"page","title":"UTAGEをAIに任せる5段階","url":"https://claude.ai/code/artifact/2fa433c8-ea01-42ed-a1f7-2a05ce6ea364","emoji":"🪜","cat":"utage","updated":"2026-09-09","note":"自動化の段階と進め方"},
+  {"id":"p09","kind":"page","title":"UTAGE QRチケット受付","url":"https://claude.ai/code/artifact/2eb9f66b-11fa-4883-bec0-7d174791b298","emoji":"🎟️","cat":"utage","updated":"2026-08-24","note":"QRで入場を捌く仕組み"},
+  {"id":"p10","kind":"page","title":"当日の受付のやり方","url":"https://claude.ai/code/artifact/abe38db3-3938-42bc-8b12-a32e96913334","emoji":"📱","cat":"utage","updated":"2026-08-24","note":"受付担当向けの手順"},
+  {"id":"p11","kind":"page","title":"Discord AIディレクター設計","url":"https://claude.ai/code/artifact/e9748b29-f775-4b42-8b2c-038ec4fb39b5","emoji":"🎬","cat":"bot","updated":"2026-09-01","note":"Discord上で指示を回す設計"},
+  {"id":"p12","kind":"page","title":"セミナーボット開通手順","url":"https://claude.ai/code/artifact/ba512161-5331-4d7e-acd1-80ce15783116","emoji":"🔌","cat":"bot","updated":"2026-08-26","note":"ボットを動かすまでの手順"},
+  {"id":"p13","kind":"page","title":"JVセミナー週次報告ボット","url":"https://claude.ai/code/artifact/bcb68a21-df1e-46a1-8027-af8380e3acad","emoji":"🗓️","cat":"bot","updated":"2026-08-26","note":"週次で数字を自動報告"},
+  {"id":"p14","kind":"page","title":"イングリッシュおさる｜UTAGE LINE登録数","url":"https://claude.ai/code/artifact/7a04bd3b-1a5f-44c1-90ba-451c79fe3425","emoji":"🐵","cat":"report","updated":"2026-08-28","note":"LINE登録数の推移"},
+  {"id":"p15","kind":"page","title":"Brain新プロジェクト LINE登録数","url":"https://claude.ai/code/artifact/c885e8df-c13d-4740-89dc-7dcc132a2887","emoji":"📈","cat":"report","updated":"2026-08-28","note":"LINE登録数の推移"},
+  {"id":"p16","kind":"page","title":"エバーファネル月次レポート","url":"https://claude.ai/code/artifact/598903d7-9466-4ebc-8e81-9abdf2ae13f3","emoji":"📉","cat":"report","updated":"2026-08-28","note":"エバーグリーン配信の月次まとめ"},
+  {"id":"p17","kind":"page","title":"参考動画 vs 現状 比較レポート","url":"https://claude.ai/code/artifact/8bda0b22-f2f5-4c80-83aa-0c3dfd42171f","emoji":"📊","cat":"report","updated":"2026-08-11","note":"参考動画との差分整理"},
+  {"id":"p18","kind":"page","title":"AI発信ウラカタ","url":"https://claude.ai/code/artifact/fd8fa1b4-6753-404c-9800-d615b976eed8","emoji":"✍️","cat":"content","updated":"2026-08-26","note":"発信を裏で支える仕組み"},
+  {"id":"p19","kind":"page","title":"tomomiさん｜Threads投稿イメージ（ツリーA）","url":"https://claude.ai/code/artifact/856b0904-3eea-4a62-a27f-d09484426020","emoji":"🌿","cat":"content","updated":"2026-08-14","note":"Threads投稿の見本"},
+  {"id":"p20","kind":"page","title":"エバー配信サンプル_レビュー用","url":"https://claude.ai/code/artifact/4b69b248-37e3-438d-9114-38f7c90ee78a","emoji":"🔯","cat":"content","updated":"2026-08-04","note":"配信文のレビュー用サンプル"},
+  {"id":"p21","kind":"page","title":"まぎーコンシェルジュ オフィス デザイン案5選","url":"https://claude.ai/code/artifact/571a9492-0c34-44dd-ac6d-b562293934f6","emoji":"🍃","cat":"design","updated":"2026-08-10","note":"オフィス画面の見た目5案"},
+  {"id":"p22","kind":"page","title":"ファネル診断結果（シンプル版・3案比較）","url":"https://claude.ai/code/artifact/8ba4b80e-8360-4eda-bfd4-64c9dea6230e","emoji":"🧭","cat":"design","updated":"2026-08-07","note":"診断結果ページ 3案"},
+  {"id":"p23","kind":"page","title":"ファネル診断結果（オフィス版デザイン案）","url":"https://claude.ai/code/artifact/8e5cc474-58aa-48e7-a8c2-d24a16f434c4","emoji":"🧭","cat":"design","updated":"2026-08-07","note":"診断結果ページ オフィス版"},
+  {"id":"p24","kind":"page","title":"ファネル診断結果（サンプル）","url":"https://claude.ai/code/artifact/8dfea383-611e-43e2-91c2-e2a08128509a","emoji":"🧭","cat":"design","updated":"2026-08-07","note":"診断結果ページ 最初の案"},
+  {"id":"p25","kind":"page","title":"ファネル選択ページ｜カードギャラリー案 5バリエーション","url":"https://claude.ai/code/artifact/3565640d-30b0-4e31-a1c0-78799e23857c","emoji":"🖼️","cat":"design","updated":"2026-08-07","note":"選択ページ カード型"},
+  {"id":"p26","kind":"page","title":"ファネル選択ページ｜コンパクト案 5バリエーション","url":"https://claude.ai/code/artifact/d8a43266-c43d-49cc-a4d1-5baf9b619776","emoji":"🗂️","cat":"design","updated":"2026-08-07","note":"選択ページ コンパクト型"},
+  {"id":"p27","kind":"page","title":"ファネル（LP）極小グリッド｜タイルデザイン 5案","url":"https://claude.ai/code/artifact/2ef9e90a-5127-4d6e-ad12-a18f600a76bb","emoji":"🍃","cat":"design","updated":"2026-08-07","note":"LP一覧 タイル型"},
+  {"id":"p28","kind":"page","title":"ファネル（LP）極小グリッド｜森の仲間たち世界観 5案","url":"https://claude.ai/code/artifact/aa1f5da5-0dc6-4b8a-9557-4c8799df38f1","emoji":"🐿️","cat":"design","updated":"2026-08-07","note":"LP一覧 森の世界観"},
+  {"id":"p29","kind":"page","title":"ファネル（LP）極小グリッド｜洗練SaaS系リファイン案","url":"https://claude.ai/code/artifact/8755db23-2f55-4881-bd1f-d5ae47b599f6","emoji":"📄","cat":"design","updated":"2026-08-07","note":"LP一覧 SaaS風"},
+  {"id":"p30","kind":"page","title":"ファネル（LP）極小グリッド｜どうぶつの森テイスト案","url":"https://claude.ai/code/artifact/c68181a4-11de-40e4-a54a-c2dd2cf1930f","emoji":"🍂","cat":"design","updated":"2026-08-07","note":"LP一覧 どうぶつの森風"},
+  {"id":"p31","kind":"page","title":"ファネル（LP）極小グリッド｜どうぶつの森テイスト 10案","url":"https://claude.ai/code/artifact/346a19af-e823-4072-b32d-8a1f3c8b297a","emoji":"🏝️","cat":"design","updated":"2026-08-07","note":"LP一覧 どうぶつの森風 10案"},
+
+  {"id":"r01","kind":"repo","title":"discord-secretary-bot","url":"https://github.com/mabbits999/discord-secretary-bot","visibility":"public","updated":"2026-09-13","note":"Discord秘書AIボット。このページのソース（web/hub.html）もここ"},
+  {"id":"r02","kind":"repo","title":"osaru-marketing-daigaku-dashboard","url":"https://github.com/mabbits999/osaru-marketing-daigaku-dashboard","visibility":"private","updated":"2026-09-13","note":""},
+  {"id":"r03","kind":"repo","title":"notion-ledger-test-20260912","url":"https://github.com/mabbits999/notion-ledger-test-20260912","visibility":"private","updated":"2026-09-12","note":"Notion台帳の検証用"},
+  {"id":"r04","kind":"repo","title":"mashi-beauty-camera","url":"https://github.com/mabbits999/mashi-beauty-camera","visibility":"private","updated":"2026-09-12","note":""},
+  {"id":"r05","kind":"repo","title":"magi-concierge-virtual-office","url":"https://github.com/mabbits999/magi-concierge-virtual-office","visibility":"private","updated":"2026-09-11","note":"まぎーコンシェルジュ バーチャルオフィス"},
+  {"id":"r06","kind":"repo","title":"dougahennsyuu-Astra-v2","url":"https://github.com/mabbits999/dougahennsyuu-Astra-v2","visibility":"private","updated":"2026-09-11","note":"動画編集 Astra v2"},
+  {"id":"r07","kind":"repo","title":"osaru-onnsei-mashimashiyou","url":"https://github.com/mabbits999/osaru-onnsei-mashimashiyou","visibility":"private","updated":"2026-09-11","note":""},
+  {"id":"r08","kind":"repo","title":"dougahenshu_project","url":"https://github.com/mabbits999/dougahenshu_project","visibility":"private","updated":"2026-09-11","note":"動画編集プロジェクト"},
+  {"id":"r09","kind":"repo","title":"utage-ai-5dan","url":"https://github.com/mabbits999/utage-ai-5dan","visibility":"private","updated":"2026-09-10","note":"「UTAGEをAIに任せる5段階」のコード"},
+  {"id":"r10","kind":"repo","title":"shortmovie_editor","url":"https://github.com/mabbits999/shortmovie_editor","visibility":"private","updated":"2026-09-09","note":"ショート動画編集"},
+  {"id":"r11","kind":"repo","title":"maggy_slide","url":"https://github.com/mabbits999/maggy_slide","visibility":"private","updated":"2026-09-09","note":"スライド生成"},
+  {"id":"r12","kind":"repo","title":"maggie-slide-skill","url":"https://github.com/mabbits999/maggie-slide-skill","visibility":"private","updated":"2026-09-09","note":"スライド生成スキル"},
+  {"id":"r13","kind":"repo","title":"test0908","url":"https://github.com/mabbits999/test0908","visibility":"public","updated":"2026-09-08","note":"検証用"},
+  {"id":"r14","kind":"repo","title":"utage-event-qr","url":"https://github.com/mabbits999/utage-event-qr","visibility":"private","updated":"2026-08-24","note":"UTAGE QRチケット受付のコード"},
+  {"id":"r15","kind":"repo","title":"line-post-manager","url":"https://github.com/mabbits999/line-post-manager","visibility":"private","updated":"2026-08-21","note":"LINE配信の管理"},
+  {"id":"r16","kind":"repo","title":"xserver-control-tower","url":"https://github.com/mabbits999/xserver-control-tower","visibility":"private","updated":"2026-08-21","note":"Xserver の管理"},
+  {"id":"r17","kind":"repo","title":"motion-design-os","url":"https://github.com/mabbits999/motion-design-os","visibility":"private","updated":"2026-06-13","note":""},
+  {"id":"r18","kind":"repo","title":"automation-dashboard","url":"https://github.com/mabbits999/automation-dashboard","visibility":"private","updated":"2026-05-31","note":"Vercel・Supabase と同名のプロジェクトあり"},
+  {"id":"r19","kind":"repo","title":"mashi-auto-driving-system","url":"https://github.com/mabbits999/mashi-auto-driving-system","visibility":"private","updated":"2026-05-25","note":""},
+  {"id":"r20","kind":"repo","title":"osaru-mtg","url":"https://github.com/mabbits999/osaru-mtg","visibility":"private","updated":"2026-05-01","note":"Vercel にデプロイ済み"},
+  {"id":"r21","kind":"repo","title":"stopwatch-app","url":"https://github.com/mabbits999/stopwatch-app","visibility":"private","updated":"2026-04-26","note":"Vercel: maggy-stopwatch-app"},
+  {"id":"r22","kind":"repo","title":"test","url":"https://github.com/mabbits999/test","visibility":"private","updated":"2026-04-26","note":"検証用"},
+  {"id":"r23","kind":"repo","title":"receipt-bot","url":"https://github.com/mabbits999/receipt-bot","visibility":"private","updated":"2026-04-16","note":"レシート処理ボット"},
+  {"id":"r24","kind":"repo","title":"daily-research","url":"https://github.com/mabbits999/daily-research","visibility":"private","updated":"2026-04-07","note":"Vercel にデプロイ済み"},
+  {"id":"r25","kind":"repo","title":"calender","url":"https://github.com/mabbits999/calender","visibility":"private","updated":"2026-01-24","note":"Vercel にデプロイ済み"},
+  {"id":"r26","kind":"repo","title":"daihon","url":"https://github.com/mabbits999/daihon","visibility":"public","updated":"2026-01-24","note":"台本。Vercel にデプロイ済み"},
+  {"id":"r27","kind":"repo","title":"gitpractice","url":"https://github.com/mabbits999/gitpractice","visibility":"private","updated":"2026-01-24","note":"練習用"},
+
+  {"id":"v01","kind":"vercel","title":"astra-edit-guide","url":"https://vercel.com/masashis-projects-bdd9496a/astra-edit-guide","live":"https://astra-edit-guide.vercel.app","updated":"2026-09-12","note":"動画編集 Astra の手引き"},
+  {"id":"v02","kind":"vercel","title":"slide-skill-index","url":"https://vercel.com/masashis-projects-bdd9496a/slide-skill-index","live":"https://skill.mashimashi.jp","updated":"2026-09-08","note":"独自ドメイン skill.mashimashi.jp"},
+  {"id":"v03","kind":"vercel","title":"ai-work-center","url":"https://vercel.com/masashis-projects-bdd9496a/ai-work-center","live":"https://mashi-work-center.vercel.app","updated":"2026-09-02","note":"Next.js"},
+  {"id":"v04","kind":"vercel","title":"osaru-line-tracker","url":"https://vercel.com/masashis-projects-bdd9496a/osaru-line-tracker","live":"https://osaru-line-tracker.vercel.app","updated":"2026-08-28","note":"LINE登録数の追跡"},
+  {"id":"v05","kind":"vercel","title":"osaru-pace","url":"https://vercel.com/masashis-projects-bdd9496a/osaru-pace","live":"https://osaru-pace.vercel.app","updated":"2026-08-27","note":"Next.js"},
+  {"id":"v06","kind":"vercel","title":"osaru-malaysia-camp","url":"https://vercel.com/masashis-projects-bdd9496a/osaru-malaysia-camp","live":"https://osaru-malaysia-camp.vercel.app","updated":"2026-08-18","note":"Next.js"},
+  {"id":"v07","kind":"vercel","title":"automation-dashboard","url":"https://vercel.com/masashis-projects-bdd9496a/automation-dashboard","live":"https://automation-dashboard-woad.vercel.app","repo":"automation-dashboard","updated":"2026-06-01","note":"Next.js。Supabase 同名プロジェクトと連携"},
+  {"id":"v08","kind":"vercel","title":"lp-design-gallery","url":"https://vercel.com/masashis-projects-bdd9496a/lp-design-gallery","live":"https://lp-design-gallery.vercel.app","updated":"2026-05-28","note":"LPデザインのギャラリー"},
+  {"id":"v09","kind":"vercel","title":"_deploy_site","url":"https://vercel.com/masashis-projects-bdd9496a/_deploy_site","live":"https://deploysite-psi.vercel.app","updated":"2026-05-27","note":""},
+  {"id":"v10","kind":"vercel","title":"faq-site","url":"https://vercel.com/masashis-projects-bdd9496a/faq-site","live":"https://faq-site-alpha.vercel.app","updated":"2026-05-27","note":"FAQサイト"},
+  {"id":"v11","kind":"vercel","title":"daihon","url":"https://vercel.com/masashis-projects-bdd9496a/daihon","live":"https://daihon.vercel.app","repo":"daihon","updated":"2026-05-27","note":"Next.js"},
+  {"id":"v12","kind":"vercel","title":"maggy-stopwatch-app","url":"https://vercel.com/masashis-projects-bdd9496a/maggy-stopwatch-app","live":"https://maggy-stopwatch-app.vercel.app","repo":"stopwatch-app","updated":"2026-05-26","note":"ストップウォッチ"},
+  {"id":"v13","kind":"vercel","title":"calender","url":"https://vercel.com/masashis-projects-bdd9496a/calender","live":"https://calender-orpin-alpha.vercel.app","repo":"calender","updated":"2026-05-26","note":"Next.js"},
+  {"id":"v14","kind":"vercel","title":"osaru-mtg","url":"https://vercel.com/masashis-projects-bdd9496a/osaru-mtg","live":"https://osaru-mtg.vercel.app","repo":"osaru-mtg","updated":"2026-05-22","note":"Next.js"},
+  {"id":"v15","kind":"vercel","title":"daily-research","url":"https://vercel.com/masashis-projects-bdd9496a/daily-research","live":"https://daily-research-masashis-projects-bdd9496a.vercel.app","repo":"daily-research","updated":"2026-05-16","status":"error","note":"最新デプロイが失敗中"},
+
+  {"id":"s01","kind":"supabase","title":"automation-dashboard","url":"https://supabase.com/dashboard/project/exyajpkwtwauipimalpk","updated":"2026-05-18","note":"東京リージョン / Postgres 17 / 稼働中"},
+  {"id":"s02","kind":"supabase","title":"osaru-line-secretary","url":"https://supabase.com/dashboard/project/npnsndtppisetekamzgo","updated":"2026-01-24","note":"東京リージョン / Postgres 17 / 稼働中"}
  ]
 }
 </script>
@@ -308,12 +385,21 @@ body[data-editing="1"] .row .title::after{content:none}
   var TITLE = 'ページ総覧';
   var FONT_LINK = '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Old+Mincho:wght@700&family=IBM+Plex+Mono:wght@400;500&display=swap">';
 
+  // Kinds of things the hub lists. Order here is the order on the page.
+  var KINDS = [
+    { key: 'page',     label: 'Webページ', section: 'Webページ',        emoji: '📄', glyph: false, hint: 'Claude Code で作ったページ。分類ごとに並びます', dateLabel: '更新' },
+    { key: 'repo',     label: 'GitHub',   section: 'GitHub リポジトリ', emoji: '⌥', glyph: true,  hint: 'コードの置き場所。日付は最終プッシュ',           dateLabel: '最終プッシュ' },
+    { key: 'vercel',   label: 'Vercel',   section: 'Vercel',           emoji: '▲', glyph: true,  hint: 'デプロイ済みサイト。名前で本番、右のボタンで管理画面', dateLabel: '更新' },
+    { key: 'supabase', label: 'Supabase', section: 'Supabase',         emoji: '⛁', glyph: true,  hint: 'データベース。管理画面へ',                        dateLabel: '作成' },
+    { key: 'link',     label: 'その他',   section: 'その他のリンク',    emoji: '🔗', glyph: false, hint: '手入力で足したリンク（Render、Notion、スプレッドシートなど）', dateLabel: '追加' }
+  ];
+
   var dataEl = document.getElementById('pages-data');
   var state = JSON.parse(dataEl.textContent);
   var savedJSON = JSON.stringify(state);
 
   var root = document.getElementById('root');
-  var ui = { q: '', cat: 'all', view: 'grouped' };
+  var ui = { q: '', cat: 'all', kind: 'all', view: 'grouped' };
   var editing = false;
   var editingId = null;
   var artifactCap = null;    // resolved capability namespace, or null
@@ -324,6 +410,11 @@ body[data-editing="1"] .row .title::after{content:none}
     return String(s == null ? '' : s)
       .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+  function kindKey(p) { return p.kind || 'page'; }
+  function kindOf(key) {
+    for (var i = 0; i < KINDS.length; i++) if (KINDS[i].key === key) return KINDS[i];
+    return KINDS[KINDS.length - 1];
   }
   function catOf(key) {
     for (var i = 0; i < state.categories.length; i++) {
@@ -347,8 +438,17 @@ body[data-editing="1"] .row .title::after{content:none}
   }
   function matches(p, q) {
     if (!q) return true;
-    var hay = (p.title + ' ' + (p.note || '') + ' ' + catOf(p.cat).label).toLowerCase();
+    var k = kindOf(kindKey(p));
+    var hay = [p.title, p.note, k.label, k.section, p.url, p.live, p.repo,
+      kindKey(p) === 'page' ? catOf(p.cat).label : '',
+      p.visibility === 'public' ? '公開 public' : (p.visibility === 'private' ? '非公開 private' : '')
+    ].join(' ').toLowerCase();
     return q.toLowerCase().split(/\s+/).every(function (w) { return !w || hay.indexOf(w) >= 0; });
+  }
+  function countBy(items, fn) {
+    var m = {};
+    items.forEach(function (p) { var k = fn(p); m[k] = (m[k] || 0) + 1; });
+    return m;
   }
   function dirty() { return JSON.stringify(state) !== savedJSON; }
   function pendingCount() {
@@ -362,16 +462,40 @@ body[data-editing="1"] .row .title::after{content:none}
   }
 
   /* ---------- markup ---------- */
-  function rowHTML(p, showCat) {
-    var c = catOf(p.cat);
+  function iconHTML(p) {
+    var k = kindOf(kindKey(p));
+    if (p.emoji) return '<span class="ico" aria-hidden="true">' + esc(p.emoji) + '</span>';
+    return '<span class="ico' + (k.glyph ? ' glyph' : '') + '" aria-hidden="true">' + esc(k.emoji) + '</span>';
+  }
+
+  function rowHTML(p, opts) {
+    opts = opts || {};
+    var kk = kindKey(p), k = kindOf(kk);
+    var href = (kk === 'vercel' && p.live) ? p.live : p.url;
+    var note = p.note || '';
+    if (kk === 'vercel' && p.repo) note += (note ? ' ・ ' : '') + 'GitHub: ' + p.repo;
+    if (kk === 'vercel' && p.live) note += (note ? ' ・ ' : '') + p.live.replace(/^https?:\/\//, '');
+
+    var tags = '';
+    if (opts.showKind) tags += '<span class="tag">' + esc(k.label) + '</span>';
+    if (opts.showCat && kk === 'page') tags += '<span class="tag">' + esc(catOf(p.cat).label) + '</span>';
+    if (kk === 'repo' && p.visibility === 'public') tags += '<span class="tag pub">公開</span>';
+    if (kk === 'repo' && p.visibility === 'private') tags += '<span class="tag">非公開</span>';
+    if (kk === 'vercel' && p.status === 'error') tags += '<span class="tag err">デプロイ失敗</span>';
+
+    var sub = '';
+    if (kk === 'vercel' && p.live && p.url) {
+      sub = '<a class="sub" href="' + esc(p.url) + '" target="_blank" rel="noopener">管理画面</a>';
+    }
+
     return '<li class="row" data-id="' + esc(p.id) + '">' +
-      '<span class="ico" aria-hidden="true">' + esc(p.emoji || '📄') + '</span>' +
+      iconHTML(p) +
       '<span class="main">' +
-        '<a class="title" href="' + esc(p.url) + '" target="_blank" rel="noopener">' + esc(p.title) + '</a>' +
-        (p.note ? '<span class="note">' + esc(p.note) + '</span>' : '') +
+        '<a class="title" href="' + esc(href) + '" target="_blank" rel="noopener">' + esc(p.title) + '</a>' +
+        (note ? '<span class="note">' + esc(note) + '</span>' : '') +
       '</span>' +
       '<span class="meta">' +
-        (showCat ? '<span class="cat">' + esc(c.label) + '</span>' : '') +
+        tags + sub +
         '<span class="date">' + esc(p.updated || '') + '</span>' +
         '<span class="go" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg></span>' +
         '<span class="edit-actions">' +
@@ -382,39 +506,69 @@ body[data-editing="1"] .row .title::after{content:none}
     '</li>';
   }
 
+  function groupHeadHTML(k, n) {
+    return '<div class="group-h"><h2>' + esc(k.section) + '</h2><span class="count">' + n + '</span>' +
+      (k.hint ? '<span class="hint">' + esc(k.hint) + '</span>' : '') + '</div>';
+  }
+
   function listHTML(st, f) {
-    var pages = st.pages.filter(function (p) {
-      return matches(p, f.q) && (f.cat === 'all' || p.cat === f.cat);
+    var kindFilter = f.cat !== 'all' ? 'page' : f.kind;
+    var items = st.pages.filter(function (p) {
+      if (!matches(p, f.q)) return false;
+      if (kindFilter !== 'all' && kindKey(p) !== kindFilter) return false;
+      if (f.cat !== 'all' && p.cat !== f.cat) return false;
+      return true;
     });
-    if (!pages.length) {
-      return '<p class="empty">該当するページがありません。</p>';
+    if (!items.length) {
+      return '<p class="empty">該当するものがありません。</p>';
     }
     if (f.view === 'flat') {
-      return '<section class="section flat"><div class="section-h"><h2>更新が新しい順</h2><span class="count">' + pages.length + '</span></div>' +
-        '<ul class="rows">' + pages.slice().sort(byUpdatedDesc).map(function (p) { return rowHTML(p, true); }).join('') + '</ul></section>';
+      return '<section class="group"><div class="group-h"><h2>更新が新しい順</h2><span class="count">' + items.length + '</span>' +
+        '<span class="hint">種類をまたいで日付順に並べています</span></div>' +
+        '<ul class="rows">' + items.slice().sort(byUpdatedDesc).map(function (p) { return rowHTML(p, { showKind: true, showCat: true }); }).join('') + '</ul></section>';
     }
     var out = '';
-    st.categories.forEach(function (c) {
-      var rows = pages.filter(function (p) { return p.cat === c.key; }).sort(byUpdatedDesc);
+    KINDS.forEach(function (k) {
+      var rows = items.filter(function (p) { return kindKey(p) === k.key; });
       if (!rows.length) return;
-      out += '<section class="section" id="cat-' + esc(c.key) + '">' +
-        '<div class="section-h"><h2>' + esc(c.label) + '</h2><span class="count">' + rows.length + '</span>' +
-        (c.hint ? '<span class="hint">' + esc(c.hint) + '</span>' : '') + '</div>' +
-        '<ul class="rows">' + rows.map(function (p) { return rowHTML(p, false); }).join('') + '</ul></section>';
+      out += '<section class="group" id="kind-' + esc(k.key) + '">' + groupHeadHTML(k, rows.length);
+      if (k.key === 'page') {
+        st.categories.forEach(function (c) {
+          var cr = rows.filter(function (p) { return p.cat === c.key; }).sort(byUpdatedDesc);
+          if (!cr.length) return;
+          out += '<section class="section" id="cat-' + esc(c.key) + '">' +
+            '<div class="section-h"><h3>' + esc(c.label) + '</h3><span class="count">' + cr.length + '</span>' +
+            (c.hint ? '<span class="hint">' + esc(c.hint) + '</span>' : '') + '</div>' +
+            '<ul class="rows">' + cr.map(function (p) { return rowHTML(p); }).join('') + '</ul></section>';
+        });
+        var orphans = rows.filter(function (p) { return !st.categories.some(function (c) { return c.key === p.cat; }); });
+        if (orphans.length) {
+          out += '<section class="section"><div class="section-h"><h3>未分類</h3><span class="count">' + orphans.length + '</span></div>' +
+            '<ul class="rows">' + orphans.sort(byUpdatedDesc).map(function (p) { return rowHTML(p); }).join('') + '</ul></section>';
+        }
+      } else {
+        out += '<ul class="rows">' + rows.sort(byUpdatedDesc).map(function (p) { return rowHTML(p); }).join('') + '</ul>';
+      }
+      out += '</section>';
     });
-    // pages whose category no longer exists
-    var orphans = pages.filter(function (p) { return !st.categories.some(function (c) { return c.key === p.cat; }); });
-    if (orphans.length) {
-      out += '<section class="section"><div class="section-h"><h2>未分類</h2><span class="count">' + orphans.length + '</span></div>' +
-        '<ul class="rows">' + orphans.sort(byUpdatedDesc).map(function (p) { return rowHTML(p, false); }).join('') + '</ul></section>';
-    }
     return out;
   }
 
+  function tabsHTML(st, f) {
+    var counts = countBy(st.pages, kindKey);
+    var h = '<button type="button" class="tab" data-kind="all" aria-pressed="' + (f.kind === 'all') + '">すべて <em>' + st.pages.length + '</em></button>';
+    KINDS.forEach(function (k) {
+      var n = counts[k.key] || 0;
+      if (!n && k.key !== 'link') return;
+      h += '<button type="button" class="tab" data-kind="' + esc(k.key) + '" aria-pressed="' + (f.kind === k.key) + '">' + esc(k.label) + ' <em>' + n + '</em></button>';
+    });
+    return h;
+  }
+
   function chipsHTML(st, f) {
-    var counts = {};
-    st.pages.forEach(function (p) { counts[p.cat] = (counts[p.cat] || 0) + 1; });
-    var h = '<button type="button" class="chip" data-cat="all" aria-pressed="' + (f.cat === 'all') + '">すべて <em>' + st.pages.length + '</em></button>';
+    var pages = st.pages.filter(function (p) { return kindKey(p) === 'page'; });
+    var counts = countBy(pages, function (p) { return p.cat; });
+    var h = '<button type="button" class="chip" data-cat="all" aria-pressed="' + (f.cat === 'all') + '">すべての分類 <em>' + pages.length + '</em></button>';
     st.categories.forEach(function (c) {
       h += '<button type="button" class="chip" data-cat="' + esc(c.key) + '" aria-pressed="' + (f.cat === c.key) + '">' + esc(c.label) + ' <em>' + (counts[c.key] || 0) + '</em></button>';
     });
@@ -426,46 +580,59 @@ body[data-editing="1"] .row .title::after{content:none}
       return '<option value="' + esc(c.key) + '"' + (c.key === sel ? ' selected' : '') + '>' + esc(c.label) + '</option>';
     }).join('');
   }
+  function kindOptionsHTML(sel) {
+    return KINDS.map(function (k) {
+      return '<option value="' + esc(k.key) + '"' + (k.key === sel ? ' selected' : '') + '>' + esc(k.label) + '</option>';
+    }).join('');
+  }
 
   function bodyHTML(st, f) {
     f = f || ui;
+    var counts = countBy(st.pages, kindKey);
+    var deploy = (counts.vercel || 0) + (counts.supabase || 0);
     return '' +
       '<header class="head">' +
-        '<div><span class="eyebrow">Hub · 全ページの入口</span><h1>' + esc(TITLE) + '</h1></div>' +
+        '<div><span class="eyebrow">Hub · 全部の入口</span><h1>' + esc(TITLE) + '</h1></div>' +
         '<div class="stats">' +
-          '<div><b>' + st.pages.length + '</b><span>ページ</span></div>' +
-          '<div><b>' + st.categories.length + '</b><span>分類</span></div>' +
+          '<div><b>' + (counts.page || 0) + '</b><span>Webページ</span></div>' +
+          '<div><b>' + (counts.repo || 0) + '</b><span>リポジトリ</span></div>' +
+          '<div><b>' + deploy + '</b><span>デプロイ・DB</span></div>' +
+          (counts.link ? '<div><b>' + counts.link + '</b><span>その他</span></div>' : '') +
           '<div><b>' + esc(latestUpdate(st.pages)) + '</b><span>最終更新</span></div>' +
         '</div>' +
       '</header>' +
       '<div class="tools" id="tools">' +
         '<label class="search"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3 3"/></svg>' +
-          '<input id="q" type="search" placeholder="ページ名・メモで探す" value="' + esc(f.q) + '" autocomplete="off"></label>' +
+          '<input id="q" type="search" placeholder="名前・メモ・URLで探す" value="' + esc(f.q) + '" autocomplete="off"></label>' +
         '<div class="seg" role="group" aria-label="並び">' +
-          '<button type="button" data-view="grouped" aria-pressed="' + (f.view === 'grouped') + '">分類ごと</button>' +
+          '<button type="button" data-view="grouped" aria-pressed="' + (f.view === 'grouped') + '">種類ごと</button>' +
           '<button type="button" data-view="flat" aria-pressed="' + (f.view === 'flat') + '">更新順</button>' +
         '</div>' +
-        '<button type="button" class="btn" id="edit-toggle" hidden>ページを追加・編集</button>' +
+        '<button type="button" class="btn" id="edit-toggle" hidden>追加・編集</button>' +
         '<span class="readonly" id="readonly-note" hidden>閲覧専用</span>' +
-        '<div class="chips" id="chips">' + chipsHTML(st, f) + '</div>' +
+        '<div class="tabs" id="tabs" role="group" aria-label="種類">' + tabsHTML(st, f) + '</div>' +
+        '<div class="chips" id="chips"' + ((f.kind === 'all' || f.kind === 'page') ? '' : ' hidden') + '>' + chipsHTML(st, f) + '</div>' +
       '</div>' +
       '<div class="panel" id="panel" hidden>' +
-        '<h3 id="panel-title">ページを追加</h3>' +
+        '<h3 id="panel-title">追加する</h3>' +
         '<form class="form" id="form" autocomplete="off">' +
-          '<div class="field f-title"><label for="f-title">ページ名</label><input id="f-title" required placeholder="例：来月のキャンペーン設計"></div>' +
-          '<div class="field f-emoji"><label for="f-emoji">絵文字</label><input id="f-emoji" placeholder="📄" maxlength="4"></div>' +
-          '<div class="field f-cat"><label for="f-cat">分類</label><select id="f-cat">' + catOptionsHTML(st, st.categories[0] && st.categories[0].key) + '</select></div>' +
-          '<div class="field f-url"><label for="f-url">URL</label><input id="f-url" type="url" required placeholder="https://claude.ai/code/artifact/…"></div>' +
-          '<div class="field f-note"><label for="f-note">ひとことメモ</label><input id="f-note" placeholder="何のページか一行で"></div>' +
+          '<div class="field f-kind"><label for="f-kind">種類</label><select id="f-kind">' + kindOptionsHTML('page') + '</select></div>' +
+          '<div class="field f-title"><label for="f-title">名前</label><input id="f-title" required placeholder="例：来月のキャンペーン設計"></div>' +
+          '<div class="field f-emoji"><label for="f-emoji">絵文字</label><input id="f-emoji" placeholder="空なら種類の印" maxlength="4"></div>' +
+          '<div class="field f-url"><label for="f-url" id="f-url-label">URL</label><input id="f-url" type="url" required placeholder="https://"></div>' +
+          '<div class="field f-cat" id="f-cat-wrap"><label for="f-cat">分類</label><select id="f-cat">' + catOptionsHTML(st, st.categories[0] && st.categories[0].key) + '</select></div>' +
+          '<div class="field f-live" id="f-live-wrap" hidden><label for="f-live">本番URL（任意）</label><input id="f-live" type="url" placeholder="https://xxx.vercel.app"></div>' +
+          '<div class="field f-note"><label for="f-note">ひとことメモ</label><input id="f-note" placeholder="何のものか一行で"></div>' +
           '<div class="form-actions">' +
             '<button type="submit" class="btn primary" id="form-submit">一覧に追加</button>' +
             '<button type="button" class="btn ghost" id="form-cancel">やめる</button>' +
             '<span class="err" id="form-err"></span>' +
+            '<span class="help">Render や Notion、スプレッドシートなどは「その他」で登録できます</span>' +
           '</div>' +
         '</form>' +
       '</div>' +
       '<main id="list">' + listHTML(st, f) + '</main>' +
-      '<footer class="foot"><span>「ページを追加・編集」から新しいページを登録すると、この一覧そのものが更新されて全員に共有されます。</span></footer>';
+      '<footer class="foot"><span>「追加・編集」から登録・修正すると、この一覧そのものが新しい版として公開されます。</span><span>GitHub・Vercel・Supabase の一覧は 2026-09-13 時点の取得結果です。</span></footer>';
   }
 
   // Full replacement document, rendered from the same source this page was built from.
@@ -473,7 +640,7 @@ body[data-editing="1"] .row .title::after{content:none}
     var css = document.getElementById('css').textContent;
     var js = document.getElementById('app').textContent;
     var json = JSON.stringify(st, null, 1).replace(/</g, '\\u003c');
-    var clean = { q: '', cat: 'all', view: 'grouped' };
+    var clean = { q: '', cat: 'all', kind: 'all', view: 'grouped' };
     return '<!doctype html>\n<html lang="ja">\n<head>\n' +
       '<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n' +
       '<title>' + esc(TITLE) + '</title>\n' + FONT_LINK + '\n' +
@@ -487,7 +654,10 @@ body[data-editing="1"] .row .title::after{content:none}
   /* ---------- rendering ---------- */
   function renderList() {
     document.getElementById('list').innerHTML = listHTML(state, ui);
-    document.getElementById('chips').innerHTML = chipsHTML(state, ui);
+    document.getElementById('tabs').innerHTML = tabsHTML(state, ui);
+    var chips = document.getElementById('chips');
+    chips.innerHTML = chipsHTML(state, ui);
+    chips.hidden = !(ui.kind === 'all' || ui.kind === 'page');
     var seg = document.querySelectorAll('.seg button');
     for (var i = 0; i < seg.length; i++) seg[i].setAttribute('aria-pressed', String(seg[i].dataset.view === ui.view));
     renderSaveBar();
@@ -529,24 +699,36 @@ body[data-editing="1"] .row .title::after{content:none}
     editing = on;
     document.body.dataset.editing = on ? '1' : '';
     var btn = document.getElementById('edit-toggle');
-    btn.textContent = on ? '編集を終える' : 'ページを追加・編集';
+    btn.textContent = on ? '編集を終える' : '追加・編集';
     btn.classList.toggle('primary', on);
     var panel = document.getElementById('panel');
     panel.hidden = !on;
     if (on) { openForm(null); }
   }
 
+  function syncFormKind() {
+    var kind = document.getElementById('f-kind').value;
+    document.getElementById('f-cat-wrap').hidden = kind !== 'page';
+    document.getElementById('f-live-wrap').hidden = kind !== 'vercel';
+    var lbl = document.getElementById('f-url-label');
+    lbl.textContent = kind === 'vercel' ? 'Vercel 管理画面のURL' : (kind === 'repo' ? 'GitHub のURL' : (kind === 'supabase' ? 'Supabase 管理画面のURL' : 'URL'));
+  }
+
   function openForm(p) {
     editingId = p ? p.id : null;
-    document.getElementById('panel-title').textContent = p ? 'ページを編集' : 'ページを追加';
+    var kind = p ? kindKey(p) : (ui.kind !== 'all' ? ui.kind : 'page');
+    document.getElementById('panel-title').textContent = p ? '編集する' : '追加する';
     document.getElementById('form-submit').textContent = p ? '変更を反映' : '一覧に追加';
+    document.getElementById('f-kind').value = kind;
     document.getElementById('f-title').value = p ? p.title : '';
     document.getElementById('f-emoji').value = p ? (p.emoji || '') : '';
-    document.getElementById('f-cat').value = p ? p.cat : (state.categories[0] && state.categories[0].key);
+    document.getElementById('f-cat').value = (p && p.cat) ? p.cat : (state.categories[0] && state.categories[0].key);
     document.getElementById('f-url').value = p ? p.url : '';
+    document.getElementById('f-live').value = p ? (p.live || '') : '';
     document.getElementById('f-note').value = p ? (p.note || '') : '';
     document.getElementById('form-err').textContent = '';
     document.getElementById('panel').hidden = false;
+    syncFormKind();
     if (p) document.getElementById('f-title').focus();
   }
   function closeForm() {
@@ -556,25 +738,32 @@ body[data-editing="1"] .row .title::after{content:none}
 
   function submitForm(e) {
     e.preventDefault();
+    var kind = document.getElementById('f-kind').value;
     var title = document.getElementById('f-title').value.trim();
     var url = document.getElementById('f-url').value.trim();
+    var live = document.getElementById('f-live').value.trim();
     var emoji = document.getElementById('f-emoji').value.trim();
     var cat = document.getElementById('f-cat').value;
     var note = document.getElementById('f-note').value.trim();
     var err = document.getElementById('form-err');
-    if (!title) { err.textContent = 'ページ名を入れてください。'; return; }
+    if (!title) { err.textContent = '名前を入れてください。'; return; }
     if (!/^https?:\/\//i.test(url)) { err.textContent = 'URLは https:// から始めてください。'; return; }
+    if (live && !/^https?:\/\//i.test(live)) { err.textContent = '本番URLは https:// から始めてください。'; return; }
     var dup = state.pages.filter(function (p) { return p.url === url && p.id !== editingId; })[0];
     if (dup) { err.textContent = '同じURLが「' + dup.title + '」として登録済みです。'; return; }
+
+    function apply(p) {
+      p.kind = kind; p.title = title; p.url = url; p.emoji = emoji; p.note = note;
+      if (kind === 'page') p.cat = cat; else delete p.cat;
+      if (kind === 'vercel' && live) p.live = live; else delete p.live;
+    }
     if (editingId) {
-      state.pages.forEach(function (p) {
-        if (p.id !== editingId) return;
-        p.title = title; p.url = url; p.emoji = emoji; p.cat = cat; p.note = note;
-      });
+      state.pages.forEach(function (p) { if (p.id === editingId) apply(p); });
       toast('「' + title + '」を変更しました。保存するまで公開されません。');
     } else {
-      var id = 'p' + Date.now().toString(36);
-      state.pages.push({ id: id, title: title, url: url, emoji: emoji, cat: cat, updated: today(), note: note });
+      var np = { id: kind.charAt(0) + Date.now().toString(36), updated: today() };
+      apply(np);
+      state.pages.push(np);
       toast('「' + title + '」を一覧に追加しました。保存するまで公開されません。');
     }
     editingId = null;
@@ -592,7 +781,7 @@ body[data-editing="1"] .row .title::after{content:none}
       openForm(p);
       document.getElementById('panel').scrollIntoView({ block: 'nearest', behavior: 'smooth' });
     } else if (b.dataset.act === 'del') {
-      if (!window.confirm('「' + p.title + '」を一覧から外しますか？（ページ自体は消えません）')) return;
+      if (!window.confirm('「' + p.title + '」を一覧から外しますか？（本体は消えません）')) return;
       state.pages = state.pages.filter(function (x) { return x.id !== p.id; });
       if (editingId === p.id) closeForm();
       renderList();
@@ -636,6 +825,12 @@ body[data-editing="1"] .row .title::after{content:none}
   root.innerHTML = bodyHTML(state, ui);
 
   document.getElementById('q').addEventListener('input', function (e) { ui.q = e.target.value; renderList(); });
+  document.getElementById('tabs').addEventListener('click', function (e) {
+    var t = e.target.closest('.tab'); if (!t) return;
+    ui.kind = t.dataset.kind;
+    if (ui.kind !== 'all' && ui.kind !== 'page') ui.cat = 'all';
+    renderList();
+  });
   document.getElementById('chips').addEventListener('click', function (e) {
     var c = e.target.closest('.chip'); if (!c) return;
     ui.cat = c.dataset.cat; renderList();
@@ -646,6 +841,7 @@ body[data-editing="1"] .row .title::after{content:none}
   });
   document.getElementById('list').addEventListener('click', onListClick);
   document.getElementById('form').addEventListener('submit', submitForm);
+  document.getElementById('f-kind').addEventListener('change', syncFormKind);
   document.getElementById('form-cancel').addEventListener('click', function () { closeForm(); });
   document.getElementById('edit-toggle').addEventListener('click', function () { setEditing(!editing); });
 

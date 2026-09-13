@@ -137,10 +137,10 @@ KNOWLEDGE_DIR=/var/data/knowledge
 
 ## 7. ページ総覧（web/hub.html）
 
-`web/hub.html` は、これまで作った Web ページ（Claude Code のアーティファクト）を分類ごとに一覧化し、どのページにも一クリックで飛べる入口ページです。
+`web/hub.html` は、これまで作った Web ページ（Claude Code のアーティファクト）に加えて、GitHub リポジトリ・Vercel プロジェクト・Supabase プロジェクト・手入力リンクを一覧化し、どこにでも一クリックで飛べる入口ページです。
 
 ・公開版: https://claude.ai/code/artifact/97fa606a-98b7-4de1-970f-e475c26bc84a
-・ページの追加・編集は公開版の「ページを追加・編集」ボタンから行うと、一覧そのものが新しい版として公開されます
+・追加・編集は公開版の「追加・編集」ボタンから行うと、一覧そのものが新しい版として公開されます（種類: Webページ / GitHub / Vercel / Supabase / その他）
 ・登録データはファイル内の `pages-data` ブロック（JSON）にあり、手で直しても構いません
 
 ## 8. knowledge の使い方
@@ -156,7 +156,7 @@ KNOWLEDGE_DIR=/var/data/knowledge
 ・講座スケジュール
 ・よくある質問
 
-## 8. 次に足すと強い機能
+## 9. 次に足すと強い機能
 
 ・Googleスプレッドシート自動記録
 ・Notion検索
@@ -166,7 +166,7 @@ KNOWLEDGE_DIR=/var/data/knowledge
 ・月末の請求リマインド
 ・担当者の自動振り分け
 
-## 9. 注意
+## 10. 注意
 
 ・`GOOGLE_SERVICE_ACCOUNT_JSON` は 1 行の JSON にして環境変数へ入れる
 ・コマンドが出ないときは `DISCORD_GUILD_ID` を入れて再デプロイすると反映が早い
