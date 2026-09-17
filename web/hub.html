@@ -65,15 +65,6 @@ button,input,select,textarea{font:inherit;color:inherit}
   display:block;font-size:13px;letter-spacing:.06em;
   color:var(--ui-primary);margin-bottom:6px;font-weight:800;
 }
-.stats{display:flex;gap:12px;flex-wrap:wrap;min-width:0}
-.stats > div{
-  background:var(--ui-card);border-radius:var(--ui-radius-sm);
-  box-shadow:var(--ui-shadow-soft);
-  padding:10px 16px;min-width:96px;
-  display:flex;flex-direction:column;gap:2px;
-}
-.stats b{font-family:var(--font-mono);font-size:24px;font-weight:500;color:var(--ui-text);line-height:1.15;font-variant-numeric:tabular-nums}
-.stats span{font-size:12.5px;color:var(--ui-muted);font-weight:700}
 
 /* ---------- toolbar ---------- */
 .tools{
@@ -295,8 +286,6 @@ body[data-editing="1"] .row .title::after{content:none}
   .f-kind,.f-title,.f-emoji,.f-cat,.f-url,.f-live,.f-note{grid-column:1/-1}
   .f-kind{grid-column:span 8}.f-emoji{grid-column:span 4}
   .group-h .hint,.section-h .hint{margin-left:0;width:100%}
-  .stats > div{min-width:80px;padding:8px 12px}
-  .stats b{font-size:20px}
 }
 @media (prefers-reduced-motion:reduce){
   .row,.btn,.tab{transition:none}
@@ -675,18 +664,9 @@ body[data-editing="1"] .row .title::after{content:none}
 
   function bodyHTML(st, f) {
     f = f || ui;
-    var counts = countBy(st.pages, kindKey);
-    var deploy = (counts.vercel || 0) + (counts.supabase || 0) + (counts.xserver || 0);
     return '' +
       '<header class="head">' +
         '<div><span class="eyebrow">HUB · 全部の入口</span><h1>' + esc(TITLE) + '</h1></div>' +
-        '<div class="stats">' +
-          '<div><b>' + (counts.page || 0) + '</b><span>Webページ</span></div>' +
-          '<div><b>' + (counts.repo || 0) + '</b><span>リポジトリ</span></div>' +
-          '<div><b>' + deploy + '</b><span>サイト・DB</span></div>' +
-          (counts.link ? '<div><b>' + counts.link + '</b><span>その他</span></div>' : '') +
-          '<div><b>' + esc(latestUpdate(st.pages)) + '</b><span>最終更新</span></div>' +
-        '</div>' +
       '</header>' +
       '<div class="tools" id="tools">' +
         '<label class="search"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3 3"/></svg>' +
