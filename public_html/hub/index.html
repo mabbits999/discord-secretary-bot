@@ -416,11 +416,11 @@ body[data-editing="1"] .row .title::after{content:none}
 
   // Kinds of things the hub lists. Order here is the order on the page.
   var KINDS = [
+    { key: 'xserver',  label: 'mashimashi.jp', section: 'mashimashi.jp（Xserver）', emoji: '', mark: 'X', hint: 'Xserver の public_html に置いてあるサイト。サブドメインがあれば 名前.mashimashi.jp でも開けます', dateLabel: '更新' },
     { key: 'page',     label: 'Webページ', section: 'Webページ',        emoji: '📄', mark: '', hint: 'Claude Code で作ったページ。分類ごとに並びます', dateLabel: '更新' },
     { key: 'repo',     label: 'GitHub',   section: 'GitHub リポジトリ', emoji: '', mark: 'GH',    hint: 'コードの置き場所。日付は最終プッシュ',           dateLabel: '最終プッシュ' },
     { key: 'vercel',   label: 'Vercel',   section: 'Vercel',           emoji: '', mark: '▲',     hint: 'デプロイ済みサイト。名前で本番、右のボタンで管理画面', dateLabel: '更新' },
     { key: 'supabase', label: 'Supabase', section: 'Supabase',         emoji: '', mark: 'DB',    hint: 'データベース。管理画面へ',                        dateLabel: '作成' },
-    { key: 'xserver',  label: 'mashimashi.jp', section: 'mashimashi.jp（Xserver）', emoji: '', mark: 'X', hint: 'Xserver の public_html に置いてあるサイト。サブドメインがあれば 名前.mashimashi.jp でも開けます', dateLabel: '更新' },
     { key: 'link',     label: 'その他',   section: 'その他のリンク',    emoji: '🔗', mark: '', hint: '手入力で足したリンク（Render、Notion、スプレッドシートなど）', dateLabel: '追加' }
   ];
 
