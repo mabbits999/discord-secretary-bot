@@ -1,0 +1,36 @@
+name: Deploy hub to mashimashi.jp
+
+# public_html/hub/ が変わってプッシュされたら、Xserver の同じ場所へ自動アップロードする。
+# 必要なもの: リポジトリの Secrets に XSERVER_FTP_PASS（FTPパスワード）を1つ登録するだけ。
+
+on:
+  push:
+    branches:
+      - claude/core-page-creation-g6n8p2
+      - main
+    paths:
+      - "public_html/hub/**"
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-hub-xserver
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Upload public_html/hub to Xserver (FTPS)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: sv10804.xserver.jp
+          username: xs108650
+          password: ${{ secrets.XSERVER_FTP_PASS }}
+          protocol: ftps
+          port: 21
+          local-dir: public_html/hub/
+          server-dir: /mashimashi.jp/public_html/hub/
+          dangerous-clean-slate: false

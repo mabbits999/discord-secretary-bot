@@ -156,6 +156,12 @@ bash web/deploy_xserver.sh                    # public_html/hub/index.html を�
 ・完成ファイルはリポジトリの `public_html/hub/index.html`（Xserver と同じ配置）。Xserver のファイルマネージャから手で置いても構いません
 ・Xserver 上の版は閲覧専用です（追加・編集は公開版のアーティファクトで行い、再アップロードで反映）
 
+### 自動反映（GitHub Actions）
+
+`public_html/hub/` が変わってプッシュされると、`.github/workflows/deploy-hub-xserver.yml` が Xserver の同じ場所へ FTPS でアップロードします。
+必要なのは GitHub の Settings → Secrets and variables → Actions に `XSERVER_FTP_PASS`（FTPパスワード）を登録することだけです。
+毎週月曜 9時の自動更新（Claude の Routine）→ プッシュ → この Actions → mashimashi.jp 反映、までが手放しで回ります。
+
 ## 8. knowledge の使い方
 
 `knowledge/` に `.txt` や `.md` を入れてください。
