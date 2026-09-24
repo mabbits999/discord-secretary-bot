@@ -298,103 +298,1072 @@ body[data-editing="1"] .row .title::after{content:none}
 <script id="pages-data" type="application/json">
 {
  "categories": [
-  {"key":"plan","label":"経営・企画","hint":"方針決め・組織づくり・設計書"},
-  {"key":"ledger","label":"台帳・ルール","hint":"日々書き足していく記録と決まりごと"},
-  {"key":"utage","label":"UTAGE・受付運用","hint":"UTAGEの手順とイベント当日の運用"},
-  {"key":"bot","label":"Discord・ボット","hint":"秘書ボットや自動報告の設計・開通手順"},
-  {"key":"report","label":"レポート・数値","hint":"LINE登録数や月次の振り返り"},
-  {"key":"content","label":"発信・コンテンツ","hint":"投稿文・配信文・発信の裏方"},
-  {"key":"design","label":"ファネル・LPデザイン案","hint":"見た目の比較検討用。決まった案は上の分類へ"}
+  {
+   "key": "plan",
+   "label": "経営・企画",
+   "hint": "方針決め・組織づくり・設計書"
+  },
+  {
+   "key": "ledger",
+   "label": "台帳・ルール",
+   "hint": "日々書き足していく記録と決まりごと"
+  },
+  {
+   "key": "utage",
+   "label": "UTAGE・受付運用",
+   "hint": "UTAGEの手順とイベント当日の運用"
+  },
+  {
+   "key": "bot",
+   "label": "Discord・ボット",
+   "hint": "秘書ボットや自動報告の設計・開通手順"
+  },
+  {
+   "key": "report",
+   "label": "レポート・数値",
+   "hint": "LINE登録数や月次の振り返り"
+  },
+  {
+   "key": "content",
+   "label": "発信・コンテンツ",
+   "hint": "投稿文・配信文・発信の裏方"
+  },
+  {
+   "key": "design",
+   "label": "ファネル・LPデザイン案",
+   "hint": "見た目の比較検討用。決まった案は上の分類へ"
+  }
  ],
  "pages": [
-  {"id":"p01","kind":"page","title":"企画の選別台","url":"https://claude.ai/code/artifact/7848bc23-1b97-4ce8-a743-a7f8966247fb","emoji":"🎯","cat":"plan","updated":"2026-09-11","note":"企画案をふるいにかける"},
-  {"id":"p02","kind":"page","title":"組織化チーム化チェックリスト","url":"https://claude.ai/code/artifact/4842300a-113b-4966-9ecf-cd162288ba83","emoji":"✅","cat":"plan","updated":"2026-09-12","note":"チーム化の進み具合を確認"},
-  {"id":"p03","kind":"page","title":"Phase 1 設計書｜UTAGE×AI マーケ責任者オフィス","url":"https://claude.ai/code/artifact/ba0ef90e-b9cc-4208-bc31-dc1188873031","emoji":"🏭","cat":"plan","updated":"2026-07-24","note":"オフィス構想の初期設計"},
-  {"id":"p04","kind":"page","title":"オフ会ナレッジ台帳","url":"https://claude.ai/code/artifact/16bde990-a47c-4987-8fe2-c6028fdbac68","emoji":"🎤","cat":"ledger","updated":"2026-09-11","note":"オフ会で得た知見の記録"},
-  {"id":"p05","kind":"page","title":"X切り抜き台帳","url":"https://claude.ai/code/artifact/49db0dca-3d92-4878-9880-d1761239b95b","emoji":"✂️","cat":"ledger","updated":"2026-09-09","note":"切り抜き投稿のストック"},
-  {"id":"p06","kind":"page","title":"映像指示の要素表","url":"https://claude.ai/code/artifact/1d7cfe8b-a4a0-4049-a892-de847d42c47d","emoji":"📐","cat":"ledger","updated":"2026-08-27","note":"編集者へ渡す指示の項目"},
-  {"id":"p07","kind":"page","title":"LINEシナリオ設計ルール集","url":"https://claude.ai/code/artifact/00a010aa-cda7-47f1-9a16-4f56333cc671","emoji":"📐","cat":"ledger","updated":"2026-07-26","note":"配信シナリオを組むときの決まり"},
-  {"id":"p08","kind":"page","title":"UTAGEをAIに任せる5段階","url":"https://claude.ai/code/artifact/2fa433c8-ea01-42ed-a1f7-2a05ce6ea364","emoji":"🪜","cat":"utage","updated":"2026-09-09","note":"自動化の段階と進め方"},
-  {"id":"p09","kind":"page","title":"UTAGE QRチケット受付","url":"https://claude.ai/code/artifact/2eb9f66b-11fa-4883-bec0-7d174791b298","emoji":"🎟️","cat":"utage","updated":"2026-08-24","note":"QRで入場を捌く仕組み"},
-  {"id":"p10","kind":"page","title":"当日の受付のやり方","url":"https://claude.ai/code/artifact/abe38db3-3938-42bc-8b12-a32e96913334","emoji":"📱","cat":"utage","updated":"2026-08-24","note":"受付担当向けの手順"},
-  {"id":"p11","kind":"page","title":"Discord AIディレクター設計","url":"https://claude.ai/code/artifact/e9748b29-f775-4b42-8b2c-038ec4fb39b5","emoji":"🎬","cat":"bot","updated":"2026-09-01","note":"Discord上で指示を回す設計"},
-  {"id":"p12","kind":"page","title":"セミナーボット開通手順","url":"https://claude.ai/code/artifact/ba512161-5331-4d7e-acd1-80ce15783116","emoji":"🔌","cat":"bot","updated":"2026-08-26","note":"ボットを動かすまでの手順"},
-  {"id":"p13","kind":"page","title":"JVセミナー週次報告ボット","url":"https://claude.ai/code/artifact/bcb68a21-df1e-46a1-8027-af8380e3acad","emoji":"🗓️","cat":"bot","updated":"2026-08-26","note":"週次で数字を自動報告"},
-  {"id":"p14","kind":"page","title":"イングリッシュおさる｜UTAGE LINE登録数","url":"https://claude.ai/code/artifact/7a04bd3b-1a5f-44c1-90ba-451c79fe3425","emoji":"🐵","cat":"report","updated":"2026-08-28","note":"LINE登録数の推移"},
-  {"id":"p15","kind":"page","title":"Brain新プロジェクト LINE登録数","url":"https://claude.ai/code/artifact/c885e8df-c13d-4740-89dc-7dcc132a2887","emoji":"📈","cat":"report","updated":"2026-08-28","note":"LINE登録数の推移"},
-  {"id":"p16","kind":"page","title":"エバーファネル月次レポート","url":"https://claude.ai/code/artifact/598903d7-9466-4ebc-8e81-9abdf2ae13f3","emoji":"📉","cat":"report","updated":"2026-08-28","note":"エバーグリーン配信の月次まとめ"},
-  {"id":"p17","kind":"page","title":"参考動画 vs 現状 比較レポート","url":"https://claude.ai/code/artifact/8bda0b22-f2f5-4c80-83aa-0c3dfd42171f","emoji":"📊","cat":"report","updated":"2026-08-11","note":"参考動画との差分整理"},
-  {"id":"p18","kind":"page","title":"AI発信ウラカタ","url":"https://claude.ai/code/artifact/fd8fa1b4-6753-404c-9800-d615b976eed8","emoji":"✍️","cat":"content","updated":"2026-08-26","note":"発信を裏で支える仕組み"},
-  {"id":"p19","kind":"page","title":"tomomiさん｜Threads投稿イメージ（ツリーA）","url":"https://claude.ai/code/artifact/856b0904-3eea-4a62-a27f-d09484426020","emoji":"🌿","cat":"content","updated":"2026-08-14","note":"Threads投稿の見本"},
-  {"id":"p20","kind":"page","title":"エバー配信サンプル_レビュー用","url":"https://claude.ai/code/artifact/4b69b248-37e3-438d-9114-38f7c90ee78a","emoji":"🔯","cat":"content","updated":"2026-08-04","note":"配信文のレビュー用サンプル"},
-  {"id":"p21","kind":"page","title":"まぎーコンシェルジュ オフィス デザイン案5選","url":"https://claude.ai/code/artifact/571a9492-0c34-44dd-ac6d-b562293934f6","emoji":"🍃","cat":"design","updated":"2026-08-10","note":"オフィス画面の見た目5案"},
-  {"id":"p22","kind":"page","title":"ファネル診断結果（シンプル版・3案比較）","url":"https://claude.ai/code/artifact/8ba4b80e-8360-4eda-bfd4-64c9dea6230e","emoji":"🧭","cat":"design","updated":"2026-08-07","note":"診断結果ページ 3案"},
-  {"id":"p23","kind":"page","title":"ファネル診断結果（オフィス版デザイン案）","url":"https://claude.ai/code/artifact/8e5cc474-58aa-48e7-a8c2-d24a16f434c4","emoji":"🧭","cat":"design","updated":"2026-08-07","note":"診断結果ページ オフィス版"},
-  {"id":"p24","kind":"page","title":"ファネル診断結果（サンプル）","url":"https://claude.ai/code/artifact/8dfea383-611e-43e2-91c2-e2a08128509a","emoji":"🧭","cat":"design","updated":"2026-08-07","note":"診断結果ページ 最初の案"},
-  {"id":"p25","kind":"page","title":"ファネル選択ページ｜カードギャラリー案 5バリエーション","url":"https://claude.ai/code/artifact/3565640d-30b0-4e31-a1c0-78799e23857c","emoji":"🖼️","cat":"design","updated":"2026-08-07","note":"選択ページ カード型"},
-  {"id":"p26","kind":"page","title":"ファネル選択ページ｜コンパクト案 5バリエーション","url":"https://claude.ai/code/artifact/d8a43266-c43d-49cc-a4d1-5baf9b619776","emoji":"🗂️","cat":"design","updated":"2026-08-07","note":"選択ページ コンパクト型"},
-  {"id":"p27","kind":"page","title":"ファネル（LP）極小グリッド｜タイルデザイン 5案","url":"https://claude.ai/code/artifact/2ef9e90a-5127-4d6e-ad12-a18f600a76bb","emoji":"🍃","cat":"design","updated":"2026-08-07","note":"LP一覧 タイル型"},
-  {"id":"p28","kind":"page","title":"ファネル（LP）極小グリッド｜森の仲間たち世界観 5案","url":"https://claude.ai/code/artifact/aa1f5da5-0dc6-4b8a-9557-4c8799df38f1","emoji":"🐿️","cat":"design","updated":"2026-08-07","note":"LP一覧 森の世界観"},
-  {"id":"p29","kind":"page","title":"ファネル（LP）極小グリッド｜洗練SaaS系リファイン案","url":"https://claude.ai/code/artifact/8755db23-2f55-4881-bd1f-d5ae47b599f6","emoji":"📄","cat":"design","updated":"2026-08-07","note":"LP一覧 SaaS風"},
-  {"id":"p30","kind":"page","title":"ファネル（LP）極小グリッド｜どうぶつの森テイスト案","url":"https://claude.ai/code/artifact/c68181a4-11de-40e4-a54a-c2dd2cf1930f","emoji":"🍂","cat":"design","updated":"2026-08-07","note":"LP一覧 どうぶつの森風"},
-  {"id":"p31","kind":"page","title":"ファネル（LP）極小グリッド｜どうぶつの森テイスト 10案","url":"https://claude.ai/code/artifact/346a19af-e823-4072-b32d-8a1f3c8b297a","emoji":"🏝️","cat":"design","updated":"2026-08-07","note":"LP一覧 どうぶつの森風 10案"},
-
-  {"id":"r01","kind":"repo","title":"discord-secretary-bot","url":"https://github.com/mabbits999/discord-secretary-bot","visibility":"public","updated":"2026-09-13","note":"Discord秘書AIボット。メンションで質問に答え「今日の予定」でGoogleカレンダーを読む。ページ総覧のソース（web/hub.html）もここ"},
-  {"id":"r02","kind":"repo","title":"osaru-marketing-daigaku-dashboard","url":"https://github.com/mabbits999/osaru-marketing-daigaku-dashboard","visibility":"private","updated":"2026-09-13","note":"進捗AI秘書（LINE＋Chatwork）。グループの会話と音声を貯めて週1回AIが進捗レポートを作る。PHP製、mashimashi.jp/line-secretary/ に設置済み"},
-  {"id":"r03","kind":"repo","title":"notion-ledger-test-20260912","url":"https://github.com/mabbits999/notion-ledger-test-20260912","visibility":"private","updated":"2026-09-12","status":"empty","note":"空のリポジトリ（中身なし）。Notion台帳の検証用に作成"},
-  {"id":"r04","kind":"repo","title":"mashi-beauty-camera","url":"https://github.com/mabbits999/mashi-beauty-camera","visibility":"private","updated":"2026-09-12","note":"MashiCamera（美容カメラアプリ）の開発フォルダ。指示書・知識・振り返りログ入り。READMEなし"},
-  {"id":"r05","kind":"repo","title":"magi-concierge-virtual-office","url":"https://github.com/mabbits999/magi-concierge-virtual-office","visibility":"private","updated":"2026-09-11","note":"まぎーコンシェルジュ。UTAGEの設定状況を解析し、必要な分岐だけ案内するオフィス画面（office-v3）。動画レッスンの教材リッチ化も"},
-  {"id":"r06","kind":"repo","title":"dougahennsyuu-Astra-v2","url":"https://github.com/mabbits999/dougahennsyuu-Astra-v2","visibility":"private","updated":"2026-09-11","note":"Astra Edit。トーク動画をカット→テロップ→図解→効果音→書き出しの工程ごとに確認して仕上げるローカル編集アプリ。Premiere用パッケージも出力"},
-  {"id":"r07","kind":"repo","title":"osaru-onnsei-mashimashiyou","url":"https://github.com/mabbits999/osaru-onnsei-mashimashiyou","visibility":"private","updated":"2026-09-11","note":"おさる音声の文字起こしから記事・教材の下書きを作る作業場。オフ会の下書き、素材台帳、対象リスト"},
-  {"id":"r08","kind":"repo","title":"dougahenshu_project","url":"https://github.com/mabbits999/dougahenshu_project","visibility":"private","updated":"2026-09-11","note":"Astra Edit の旧コピー（dougahennsyuu-Astra-v2 と同じREADME）。最新は Astra-v2 側"},
-  {"id":"r09","kind":"repo","title":"utage-ai-5dan","url":"https://github.com/mabbits999/utage-ai-5dan","visibility":"private","updated":"2026-09-10","note":"「UTAGEをAIに任せる5段階」セミナー用ページの本体。177操作を5段階に並べた図解と一覧。Vercel配信・noindex"},
-  {"id":"r10","kind":"repo","title":"shortmovie_editor","url":"https://github.com/mabbits999/shortmovie_editor","visibility":"private","updated":"2026-09-09","note":"受講生インタビューを縦型ショート（1080×1920）に自動編集するClaudeスキル。効果音・BGM・見本入りのため非公開厳守"},
-  {"id":"r11","kind":"repo","title":"maggy_slide","url":"https://github.com/mabbits999/maggy_slide","visibility":"private","updated":"2026-09-09","note":"まぎースライドSKILL。まぎーのキャラと青系の世界観で16:9スライドをGPT Image 2で1枚画像生成するCodexスキル"},
-  {"id":"r12","kind":"repo","title":"maggie-slide-skill","url":"https://github.com/mabbits999/maggie-slide-skill","visibility":"private","updated":"2026-09-09","note":"maggy_slide と同じ内容の重複リポジトリ"},
-  {"id":"r13","kind":"repo","title":"test0908","url":"https://github.com/mabbits999/test0908","visibility":"public","updated":"2026-09-08","note":"公開の検証用リポジトリ"},
-  {"id":"r14","kind":"repo","title":"utage-event-qr","url":"https://github.com/mabbits999/utage-event-qr","visibility":"private","updated":"2026-08-24","note":"UTAGE QRチケット受付のNext.jsアプリ。READMEは雛形のまま"},
-  {"id":"r15","kind":"repo","title":"line-post-manager","url":"https://github.com/mabbits999/line-post-manager","visibility":"private","updated":"2026-08-21","note":"LINEオープンチャット予約投稿。Mac版LINEを自動操作し、管理者本人名義で指定日時に投稿"},
-  {"id":"r16","kind":"repo","title":"xserver-control-tower","url":"https://github.com/mabbits999/xserver-control-tower","visibility":"private","updated":"2026-08-21","note":"Xserver操作の司令塔。mashimashi.jp のサイトを check/diff/backup/deploy/rollback で安全に反映するCLI"},
-  {"id":"r17","kind":"repo","title":"motion-design-os","url":"https://github.com/mabbits999/motion-design-os","visibility":"private","updated":"2026-06-13","note":"共有デザインOS。16:9動画・図解アニメのGOOD/BAD/FIXED例と、Claude/Codex向けルール集"},
-  {"id":"r18","kind":"repo","title":"automation-dashboard","url":"https://github.com/mabbits999/automation-dashboard","visibility":"private","updated":"2026-05-31","note":"自動化監視ダッシュボード。おさるナレッジ化・note自動投稿・X自動投稿の稼働状況をスマホ1画面で確認。Next.js＋Supabase＋Vercel"},
-  {"id":"r19","kind":"repo","title":"mashi-auto-driving-system","url":"https://github.com/mabbits999/mashi-auto-driving-system","visibility":"private","updated":"2026-05-25","note":"自動運転システム。note自動入稿エージェント、SNSラボ、YouTubeサムネラボ、共有ナレッジ・スキルの詰め合わせ"},
-  {"id":"r20","kind":"repo","title":"osaru-mtg","url":"https://github.com/mabbits999/osaru-mtg","visibility":"private","updated":"2026-05-01","note":"おさるMTG用Next.jsアプリ。READMEは雛形。Vercelにデプロイ済み"},
-  {"id":"r21","kind":"repo","title":"stopwatch-app","url":"https://github.com/mabbits999/stopwatch-app","visibility":"private","updated":"2026-04-26","note":"HTML/CSS/JSだけのストップウォッチ。ラップ・ショートカット対応。Vercel: maggy-stopwatch-app"},
-  {"id":"r22","kind":"repo","title":"test","url":"https://github.com/mabbits999/test","visibility":"private","updated":"2026-04-26","status":"empty","note":"空のリポジトリ"},
-  {"id":"r23","kind":"repo","title":"receipt-bot","url":"https://github.com/mabbits999/receipt-bot","visibility":"private","updated":"2026-04-16","note":"領収書を自動生成してGoogle Driveへ保存するボット（Python）"},
-  {"id":"r24","kind":"repo","title":"daily-research","url":"https://github.com/mabbits999/daily-research","visibility":"private","updated":"2026-04-07","note":"Vercel上のNode製API（日次リサーチ）。READMEなし。最新デプロイは失敗中"},
-  {"id":"r25","kind":"repo","title":"calender","url":"https://github.com/mabbits999/calender","visibility":"private","updated":"2026-01-24","note":"2026年カレンダーアプリ。月/週表示、誰でも予定追加（ブラウザ保存）。Next.js"},
-  {"id":"r26","kind":"repo","title":"daihon","url":"https://github.com/mabbits999/daihon","visibility":"public","updated":"2026-01-24","note":"台本アプリ（Next.js、Vercelにデプロイ済み）。READMEは未確認"},
-  {"id":"r27","kind":"repo","title":"gitpractice","url":"https://github.com/mabbits999/gitpractice","visibility":"private","updated":"2026-01-24","note":"Git練習用"},
-
-  {"id":"v01","kind":"vercel","title":"astra-edit-guide","url":"https://vercel.com/masashis-projects-bdd9496a/astra-edit-guide","live":"https://astra-edit-guide.vercel.app","updated":"2026-09-12","note":"動画編集 Astra の手引き"},
-  {"id":"v02","kind":"vercel","title":"slide-skill-index","url":"https://vercel.com/masashis-projects-bdd9496a/slide-skill-index","live":"https://skill.mashimashi.jp","updated":"2026-09-08","note":"独自ドメイン skill.mashimashi.jp"},
-  {"id":"v03","kind":"vercel","title":"ai-work-center","url":"https://vercel.com/masashis-projects-bdd9496a/ai-work-center","live":"https://mashi-work-center.vercel.app","updated":"2026-09-02","note":"Next.js"},
-  {"id":"v04","kind":"vercel","title":"osaru-line-tracker","url":"https://vercel.com/masashis-projects-bdd9496a/osaru-line-tracker","live":"https://osaru-line-tracker.vercel.app","updated":"2026-08-28","note":"LINE登録数の追跡"},
-  {"id":"v05","kind":"vercel","title":"osaru-pace","url":"https://vercel.com/masashis-projects-bdd9496a/osaru-pace","live":"https://osaru-pace.vercel.app","updated":"2026-08-27","note":"Next.js"},
-  {"id":"v06","kind":"vercel","title":"osaru-malaysia-camp","url":"https://vercel.com/masashis-projects-bdd9496a/osaru-malaysia-camp","live":"https://osaru-malaysia-camp.vercel.app","updated":"2026-08-18","note":"Next.js"},
-  {"id":"v07","kind":"vercel","title":"automation-dashboard","url":"https://vercel.com/masashis-projects-bdd9496a/automation-dashboard","live":"https://automation-dashboard-woad.vercel.app","repo":"automation-dashboard","updated":"2026-06-01","note":"Next.js。Supabase 同名プロジェクトと連携"},
-  {"id":"v08","kind":"vercel","title":"lp-design-gallery","url":"https://vercel.com/masashis-projects-bdd9496a/lp-design-gallery","live":"https://lp-design-gallery.vercel.app","updated":"2026-05-28","note":"LPデザインのギャラリー"},
-  {"id":"v09","kind":"vercel","title":"_deploy_site","url":"https://vercel.com/masashis-projects-bdd9496a/_deploy_site","live":"https://deploysite-psi.vercel.app","updated":"2026-05-27","note":""},
-  {"id":"v10","kind":"vercel","title":"faq-site","url":"https://vercel.com/masashis-projects-bdd9496a/faq-site","live":"https://faq-site-alpha.vercel.app","updated":"2026-05-27","note":"FAQサイト"},
-  {"id":"v11","kind":"vercel","title":"daihon","url":"https://vercel.com/masashis-projects-bdd9496a/daihon","live":"https://daihon.vercel.app","repo":"daihon","updated":"2026-05-27","note":"Next.js"},
-  {"id":"v12","kind":"vercel","title":"maggy-stopwatch-app","url":"https://vercel.com/masashis-projects-bdd9496a/maggy-stopwatch-app","live":"https://maggy-stopwatch-app.vercel.app","repo":"stopwatch-app","updated":"2026-05-26","note":"ストップウォッチ"},
-  {"id":"v13","kind":"vercel","title":"calender","url":"https://vercel.com/masashis-projects-bdd9496a/calender","live":"https://calender-orpin-alpha.vercel.app","repo":"calender","updated":"2026-05-26","note":"Next.js"},
-  {"id":"v14","kind":"vercel","title":"osaru-mtg","url":"https://vercel.com/masashis-projects-bdd9496a/osaru-mtg","live":"https://osaru-mtg.vercel.app","repo":"osaru-mtg","updated":"2026-05-22","note":"Next.js"},
-  {"id":"v15","kind":"vercel","title":"daily-research","url":"https://vercel.com/masashis-projects-bdd9496a/daily-research","live":"https://daily-research-masashis-projects-bdd9496a.vercel.app","repo":"daily-research","updated":"2026-05-16","status":"error","note":"最新デプロイが失敗中"},
-
-  {"id":"s01","kind":"supabase","title":"automation-dashboard","url":"https://supabase.com/dashboard/project/exyajpkwtwauipimalpk","updated":"2026-05-18","note":"東京リージョン / Postgres 17 / 稼働中"},
-  {"id":"s02","kind":"supabase","title":"osaru-line-secretary","url":"https://supabase.com/dashboard/project/npnsndtppisetekamzgo","updated":"2026-01-24","note":"東京リージョン / Postgres 17 / 稼働中"},
-
-  {"id":"x01","kind":"xserver","title":"lp-skill","url":"https://lp-skill.mashimashi.jp/","updated":"","note":"会員サイト（まーしー式LP）。public_html/lp-skill。上書き厳禁"},
-  {"id":"x02","kind":"xserver","title":"ai-skill","url":"https://mashimashi.jp/ai-skill/","updated":"","note":"public_html/ai-skill"},
-  {"id":"x03","kind":"xserver","title":"osaru-daihon","url":"https://mashimashi.jp/osaru-daihon/","updated":"","note":"台本。public_html/osaru-daihon"},
-  {"id":"x04","kind":"xserver","title":"samune","url":"https://mashimashi.jp/samune/","updated":"","note":"サムネイル。public_html/samune"},
-  {"id":"x05","kind":"xserver","title":"line-secretary","url":"https://mashimashi.jp/line-secretary/","updated":"","status":"private","note":"LINE秘書の裏側（webhook などの PHP）。.htaccess で閉じてあり、ブラウザでは開けません"},
-  {"id":"x06","kind":"xserver","title":"check","url":"https://mashimashi.jp/check/","updated":"","note":"public_html/check"},
-  {"id":"x07","kind":"xserver","title":"utage","url":"https://mashimashi.jp/utage/","updated":"","note":"UTAGE関連。public_html/utage"},
-  {"id":"x08","kind":"xserver","title":"おさる進捗レポート 2026-09-13","url":"https://mashimashi.jp/osaru-progress-report-20260913.html","updated":"2026-09-13","note":"public_html 直下の単体HTML"},
-  {"id":"x09","kind":"xserver","title":"hub（このページ）","url":"https://mashimashi.jp/hub/","updated":"2026-09-13","note":"ページ総覧の mashimashi.jp 版。アップロード後に開けます"}
+  {
+   "id": "p01",
+   "kind": "page",
+   "title": "企画の選別台",
+   "url": "https://claude.ai/artifact/FrV9nScm68gfVZendNWxve",
+   "emoji": "🎯",
+   "cat": "plan",
+   "updated": "2026-09-11",
+   "note": "企画案をふるいにかける"
+  },
+  {
+   "id": "p02",
+   "kind": "page",
+   "title": "組織化チーム化チェックリスト",
+   "url": "https://claude.ai/artifact/9vXH3BtMDvjyEL3LABsPaa",
+   "emoji": "✅",
+   "cat": "plan",
+   "updated": "2026-09-12",
+   "note": "チーム化の進み具合を確認"
+  },
+  {
+   "id": "p03",
+   "kind": "page",
+   "title": "Phase 1 設計書｜UTAGE×AI マーケ責任者オフィス",
+   "url": "https://claude.ai/artifact/PyZtpCQeeP1NQYEWxSBxPz",
+   "emoji": "🏭",
+   "cat": "plan",
+   "updated": "2026-07-24",
+   "note": "オフィス構想の初期設計"
+  },
+  {
+   "id": "p04",
+   "kind": "page",
+   "title": "オフ会ナレッジ台帳",
+   "url": "https://claude.ai/artifact/3oszE19Kk5LMCCkC75bDUB",
+   "emoji": "🎤",
+   "cat": "ledger",
+   "updated": "2026-09-18",
+   "note": "オフ会で得た知見の記録"
+  },
+  {
+   "id": "p05",
+   "kind": "page",
+   "title": "X切り抜き台帳",
+   "url": "https://claude.ai/artifact/A7xjCPnZbDocabH6Huwx8S",
+   "emoji": "✂️",
+   "cat": "ledger",
+   "updated": "2026-09-09",
+   "note": "切り抜き投稿のストック"
+  },
+  {
+   "id": "p06",
+   "kind": "page",
+   "title": "映像指示の要素表",
+   "url": "https://claude.ai/artifact/4eCTLe1xQ64qLLc74pTNHA",
+   "emoji": "📐",
+   "cat": "ledger",
+   "updated": "2026-08-27",
+   "note": "編集者へ渡す指示の項目"
+  },
+  {
+   "id": "p07",
+   "kind": "page",
+   "title": "LINEシナリオ設計ルール集",
+   "url": "https://claude.ai/artifact/15UjR87qECnq4TsZEVpvN4",
+   "emoji": "📐",
+   "cat": "ledger",
+   "updated": "2026-07-26",
+   "note": "配信シナリオを組むときの決まり"
+  },
+  {
+   "id": "p08",
+   "kind": "page",
+   "title": "UTAGEをAIに任せる5段階",
+   "url": "https://claude.ai/artifact/6tDJ5UiovN5KWErMwYbefM",
+   "emoji": "🪜",
+   "cat": "utage",
+   "updated": "2026-09-09",
+   "note": "自動化の段階と進め方"
+  },
+  {
+   "id": "p09",
+   "kind": "page",
+   "title": "UTAGE QRチケット受付",
+   "url": "https://claude.ai/artifact/6mfCmepq7nAXxRZegr1Xaw",
+   "emoji": "🎟️",
+   "cat": "utage",
+   "updated": "2026-08-24",
+   "note": "QRで入場を捌く仕組み"
+  },
+  {
+   "id": "p10",
+   "kind": "page",
+   "title": "当日の受付のやり方",
+   "url": "https://claude.ai/artifact/NE5pmaKiVURBkv9s1eEmAb",
+   "emoji": "📱",
+   "cat": "utage",
+   "updated": "2026-08-24",
+   "note": "受付担当向けの手順"
+  },
+  {
+   "id": "p11",
+   "kind": "page",
+   "title": "Discord AIディレクター設計",
+   "url": "https://claude.ai/artifact/Vq2ZND8jmYQtfkMqZie6tU",
+   "emoji": "🎬",
+   "cat": "bot",
+   "updated": "2026-09-01",
+   "note": "Discord上で指示を回す設計"
+  },
+  {
+   "id": "p12",
+   "kind": "page",
+   "title": "セミナーボット開通手順",
+   "url": "https://claude.ai/artifact/Q1RFBYHA5afsm6qj9uPF9X",
+   "emoji": "🔌",
+   "cat": "bot",
+   "updated": "2026-08-26",
+   "note": "ボットを動かすまでの手順"
+  },
+  {
+   "id": "p13",
+   "kind": "page",
+   "title": "JVセミナー週次報告ボット",
+   "url": "https://claude.ai/artifact/QJabm5HaMusvaNfXsVwgFN",
+   "emoji": "🗓️",
+   "cat": "bot",
+   "updated": "2026-08-26",
+   "note": "週次で数字を自動報告"
+  },
+  {
+   "id": "p14",
+   "kind": "page",
+   "title": "イングリッシュおさる｜UTAGE LINE登録数",
+   "url": "https://claude.ai/artifact/G4ucwJ3Q118oAzKtrvoNUt",
+   "emoji": "🐵",
+   "cat": "report",
+   "updated": "2026-08-28",
+   "note": "LINE登録数の推移"
+  },
+  {
+   "id": "p15",
+   "kind": "page",
+   "title": "Brain新プロジェクト LINE登録数",
+   "url": "https://claude.ai/artifact/RmAW8S3aqJiEjr1J8G8mfL",
+   "emoji": "📈",
+   "cat": "report",
+   "updated": "2026-08-28",
+   "note": "LINE登録数の推移"
+  },
+  {
+   "id": "p16",
+   "kind": "page",
+   "title": "エバーファネル月次レポート",
+   "url": "https://claude.ai/artifact/C4G2MPMWYFWZ2n8gxkrGka",
+   "emoji": "📉",
+   "cat": "report",
+   "updated": "2026-08-28",
+   "note": "エバーグリーン配信の月次まとめ"
+  },
+  {
+   "id": "p17",
+   "kind": "page",
+   "title": "参考動画 vs 現状 比較レポート",
+   "url": "https://claude.ai/artifact/JGdZNTq5Ba3oWYqpu3JxBQ",
+   "emoji": "📊",
+   "cat": "report",
+   "updated": "2026-08-11",
+   "note": "参考動画との差分整理"
+  },
+  {
+   "id": "p18",
+   "kind": "page",
+   "title": "AI発信ウラカタ",
+   "url": "https://claude.ai/artifact/YK2XyFvGi2oHrYGzWJrbBu",
+   "emoji": "✍️",
+   "cat": "content",
+   "updated": "2026-08-26",
+   "note": "発信を裏で支える仕組み"
+  },
+  {
+   "id": "p19",
+   "kind": "page",
+   "title": "tomomiさん｜Threads投稿イメージ（ツリーA）",
+   "url": "https://claude.ai/artifact/HUZ2LMPubdLUAKZHEDfnP1",
+   "emoji": "🌿",
+   "cat": "content",
+   "updated": "2026-08-14",
+   "note": "Threads投稿の見本"
+  },
+  {
+   "id": "p20",
+   "kind": "page",
+   "title": "エバー配信サンプル_レビュー用",
+   "url": "https://claude.ai/artifact/AK7bAPfUoWKor4NFZK9SRw",
+   "emoji": "🔯",
+   "cat": "content",
+   "updated": "2026-08-04",
+   "note": "配信文のレビュー用サンプル"
+  },
+  {
+   "id": "p21",
+   "kind": "page",
+   "title": "まぎーコンシェルジュ オフィス デザイン案5選",
+   "url": "https://claude.ai/artifact/Bkr2MAwVpBo5j7ecnDzXMo",
+   "emoji": "🍃",
+   "cat": "design",
+   "updated": "2026-08-10",
+   "note": "オフィス画面の見た目5案"
+  },
+  {
+   "id": "p22",
+   "kind": "page",
+   "title": "ファネル診断結果（シンプル版・3案比較）",
+   "url": "https://claude.ai/artifact/JF92mbyL8fLppmfTxCiRpH",
+   "emoji": "🧭",
+   "cat": "design",
+   "updated": "2026-08-07",
+   "note": "診断結果ページ 3案"
+  },
+  {
+   "id": "p23",
+   "kind": "page",
+   "title": "ファネル診断結果（オフィス版デザイン案）",
+   "url": "https://claude.ai/artifact/JacUt9CuoC9bFpufvKNJdq",
+   "emoji": "🧭",
+   "cat": "design",
+   "updated": "2026-08-07",
+   "note": "診断結果ページ オフィス版"
+  },
+  {
+   "id": "p24",
+   "kind": "page",
+   "title": "ファネル診断結果（サンプル）",
+   "url": "https://claude.ai/artifact/JXyk2ZcEV4Yz5qMNR9ZRa1",
+   "emoji": "🧭",
+   "cat": "design",
+   "updated": "2026-08-07",
+   "note": "診断結果ページ 最初の案"
+  },
+  {
+   "id": "p25",
+   "kind": "page",
+   "title": "ファネル選択ページ｜カードギャラリー案 5バリエーション",
+   "url": "https://claude.ai/artifact/7bRnC2ATdZXfRLWU65U3LF",
+   "emoji": "🖼️",
+   "cat": "design",
+   "updated": "2026-08-07",
+   "note": "選択ページ カード型"
+  },
+  {
+   "id": "p26",
+   "kind": "page",
+   "title": "ファネル選択ページ｜コンパクト案 5バリエーション",
+   "url": "https://claude.ai/artifact/Tkc4mrwXbTLoA2qyz3t8k5",
+   "emoji": "🗂️",
+   "cat": "design",
+   "updated": "2026-08-07",
+   "note": "選択ページ コンパクト型"
+  },
+  {
+   "id": "p27",
+   "kind": "page",
+   "title": "ファネル（LP）極小グリッド｜タイルデザイン 5案",
+   "url": "https://claude.ai/artifact/6oSyAh2NUNRUHTYrx39HTQ",
+   "emoji": "🍃",
+   "cat": "design",
+   "updated": "2026-08-07",
+   "note": "LP一覧 タイル型"
+  },
+  {
+   "id": "p28",
+   "kind": "page",
+   "title": "ファネル（LP）極小グリッド｜森の仲間たち世界観 5案",
+   "url": "https://claude.ai/artifact/N1S5SLNFV3W4fRckPcWsdA",
+   "emoji": "🐿️",
+   "cat": "design",
+   "updated": "2026-08-07",
+   "note": "LP一覧 森の世界観"
+  },
+  {
+   "id": "p29",
+   "kind": "page",
+   "title": "ファネル（LP）極小グリッド｜洗練SaaS系リファイン案",
+   "url": "https://claude.ai/artifact/HiHTbCi3G7xrjsk56bdfAu",
+   "emoji": "📄",
+   "cat": "design",
+   "updated": "2026-08-07",
+   "note": "LP一覧 SaaS風"
+  },
+  {
+   "id": "p30",
+   "kind": "page",
+   "title": "ファネル（LP）極小グリッド｜どうぶつの森テイスト案",
+   "url": "https://claude.ai/artifact/RWiZCMb1sXJGzG8n6sJFQz",
+   "emoji": "🍂",
+   "cat": "design",
+   "updated": "2026-08-07",
+   "note": "LP一覧 どうぶつの森風"
+  },
+  {
+   "id": "p31",
+   "kind": "page",
+   "title": "ファネル（LP）極小グリッド｜どうぶつの森テイスト 10案",
+   "url": "https://claude.ai/artifact/7UQ2ALqzgU1mi9V2CYtjoX",
+   "emoji": "🏝️",
+   "cat": "design",
+   "updated": "2026-08-07",
+   "note": "LP一覧 どうぶつの森風 10案"
+  },
+  {
+   "id": "p32",
+   "kind": "page",
+   "title": "おさるマーケ大学 進捗レポート 9月20日版",
+   "url": "https://claude.ai/artifact/5cbF8xgB9yfXCMvdVjZW3h",
+   "cat": "report",
+   "updated": "2026-09-20",
+   "note": "おさるマーケ大学の進捗まとめ（9/20時点）"
+  },
+  {
+   "id": "p33",
+   "kind": "page",
+   "title": "おさるGPTs 四つの装い",
+   "url": "https://claude.ai/artifact/LDvKd26DhXaBKpamgE8xvA",
+   "cat": "content",
+   "updated": "2026-09-16",
+   "note": "おさるGPTsの見せ方4案"
+  },
+  {
+   "id": "p34",
+   "kind": "page",
+   "title": "MASHI MASHIローンチ支援",
+   "url": "https://claude.ai/artifact/BkxLZvG5zhZgEaX3Af52tv",
+   "cat": "plan",
+   "updated": "2026-09-17",
+   "note": "ローンチ支援の設計・進め方"
+  },
+  {
+   "id": "p35",
+   "kind": "page",
+   "title": "たくと式の非属人アニメーション動画 再現仕様書",
+   "url": "https://claude.ai/artifact/3z8bgMeiVdX6QHJKfyxfJN",
+   "cat": "ledger",
+   "updated": "2026-09-17",
+   "note": "非属人アニメ動画を再現するための仕様"
+  },
+  {
+   "id": "p36",
+   "kind": "page",
+   "title": "香西様 エバーファネル 直近2ヶ月レポート",
+   "url": "https://claude.ai/artifact/Tid3VvoycbuLHoDUhMrJNV",
+   "cat": "report",
+   "updated": "2026-09-16",
+   "note": "エバーファネルの直近2ヶ月の数字"
+  },
+  {
+   "id": "p37",
+   "kind": "page",
+   "title": "尾崎さんの動きと評価",
+   "url": "https://claude.ai/artifact/HhkH8fXksntrsPEJDQt5iE",
+   "cat": "report",
+   "updated": "2026-09-13",
+   "note": "担当者の動きの記録と評価"
+  },
+  {
+   "id": "p38",
+   "kind": "page",
+   "title": "ローンチ資料の見出し書体くらべ",
+   "url": "https://claude.ai/artifact/P6XrF38Jg3xRoxq5W6ND58",
+   "cat": "design",
+   "updated": "2026-09-13",
+   "note": "見出し書体の比較"
+  },
+  {
+   "id": "r01",
+   "kind": "repo",
+   "title": "discord-secretary-bot",
+   "url": "https://github.com/mabbits999/discord-secretary-bot",
+   "visibility": "public",
+   "updated": "2026-09-18",
+   "note": "Discord秘書AIボット。メンションで質問に答え「今日の予定」でGoogleカレンダーを読む。ページ総覧のソース（web/hub.html）もここ"
+  },
+  {
+   "id": "r02",
+   "kind": "repo",
+   "title": "osaru-marketing-daigaku-dashboard",
+   "url": "https://github.com/mabbits999/osaru-marketing-daigaku-dashboard",
+   "visibility": "private",
+   "updated": "2026-09-24",
+   "note": "進捗AI秘書（LINE＋Chatwork）。グループの会話と音声を貯めて週1回AIが進捗レポートを作る。PHP製、mashimashi.jp/line-secretary/ に設置済み"
+  },
+  {
+   "id": "r03",
+   "kind": "repo",
+   "title": "notion-ledger-test-20260912",
+   "url": "https://github.com/mabbits999/notion-ledger-test-20260912",
+   "visibility": "private",
+   "updated": "2026-09-12",
+   "status": "empty",
+   "note": "空のリポジトリ（中身なし）。Notion台帳の検証用に作成"
+  },
+  {
+   "id": "r04",
+   "kind": "repo",
+   "title": "mashi-beauty-camera",
+   "url": "https://github.com/mabbits999/mashi-beauty-camera",
+   "visibility": "private",
+   "updated": "2026-09-12",
+   "note": "MashiCamera（美容カメラアプリ）の開発フォルダ。指示書・知識・振り返りログ入り。READMEなし"
+  },
+  {
+   "id": "r05",
+   "kind": "repo",
+   "title": "magi-concierge-virtual-office",
+   "url": "https://github.com/mabbits999/magi-concierge-virtual-office",
+   "visibility": "private",
+   "updated": "2026-09-11",
+   "note": "まぎーコンシェルジュ。UTAGEの設定状況を解析し、必要な分岐だけ案内するオフィス画面（office-v3）。動画レッスンの教材リッチ化も"
+  },
+  {
+   "id": "r06",
+   "kind": "repo",
+   "title": "dougahennsyuu-Astra-v2",
+   "url": "https://github.com/mabbits999/dougahennsyuu-Astra-v2",
+   "visibility": "private",
+   "updated": "2026-09-11",
+   "note": "Astra Edit。トーク動画をカット→テロップ→図解→効果音→書き出しの工程ごとに確認して仕上げるローカル編集アプリ。Premiere用パッケージも出力"
+  },
+  {
+   "id": "r07",
+   "kind": "repo",
+   "title": "osaru-onnsei-mashimashiyou",
+   "url": "https://github.com/mabbits999/osaru-onnsei-mashimashiyou",
+   "visibility": "private",
+   "updated": "2026-09-17",
+   "note": "おさる音声の文字起こしから記事・教材の下書きを作る作業場。オフ会の下書き、素材台帳、対象リスト"
+  },
+  {
+   "id": "r08",
+   "kind": "repo",
+   "title": "dougahenshu_project",
+   "url": "https://github.com/mabbits999/dougahenshu_project",
+   "visibility": "private",
+   "updated": "2026-09-11",
+   "note": "Astra Edit の旧コピー（dougahennsyuu-Astra-v2 と同じREADME）。最新は Astra-v2 側"
+  },
+  {
+   "id": "r09",
+   "kind": "repo",
+   "title": "utage-ai-5dan",
+   "url": "https://github.com/mabbits999/utage-ai-5dan",
+   "visibility": "private",
+   "updated": "2026-09-10",
+   "note": "「UTAGEをAIに任せる5段階」セミナー用ページの本体。177操作を5段階に並べた図解と一覧。Vercel配信・noindex"
+  },
+  {
+   "id": "r10",
+   "kind": "repo",
+   "title": "shortmovie_editor",
+   "url": "https://github.com/mabbits999/shortmovie_editor",
+   "visibility": "private",
+   "updated": "2026-09-22",
+   "note": "受講生インタビューを縦型ショート（1080×1920）に自動編集するClaudeスキル。効果音・BGM・見本入りのため非公開厳守"
+  },
+  {
+   "id": "r11",
+   "kind": "repo",
+   "title": "maggy_slide",
+   "url": "https://github.com/mabbits999/maggy_slide",
+   "visibility": "private",
+   "updated": "2026-09-09",
+   "note": "まぎースライドSKILL。まぎーのキャラと青系の世界観で16:9スライドをGPT Image 2で1枚画像生成するCodexスキル"
+  },
+  {
+   "id": "r12",
+   "kind": "repo",
+   "title": "maggie-slide-skill",
+   "url": "https://github.com/mabbits999/maggie-slide-skill",
+   "visibility": "private",
+   "updated": "2026-09-09",
+   "note": "maggy_slide と同じ内容の重複リポジトリ"
+  },
+  {
+   "id": "r13",
+   "kind": "repo",
+   "title": "test0908",
+   "url": "https://github.com/mabbits999/test0908",
+   "visibility": "public",
+   "updated": "2026-09-08",
+   "note": "公開の検証用リポジトリ"
+  },
+  {
+   "id": "r14",
+   "kind": "repo",
+   "title": "utage-event-qr",
+   "url": "https://github.com/mabbits999/utage-event-qr",
+   "visibility": "private",
+   "updated": "2026-08-24",
+   "note": "UTAGE QRチケット受付のNext.jsアプリ。READMEは雛形のまま"
+  },
+  {
+   "id": "r15",
+   "kind": "repo",
+   "title": "line-post-manager",
+   "url": "https://github.com/mabbits999/line-post-manager",
+   "visibility": "private",
+   "updated": "2026-08-21",
+   "note": "LINEオープンチャット予約投稿。Mac版LINEを自動操作し、管理者本人名義で指定日時に投稿"
+  },
+  {
+   "id": "r16",
+   "kind": "repo",
+   "title": "xserver-control-tower",
+   "url": "https://github.com/mabbits999/xserver-control-tower",
+   "visibility": "private",
+   "updated": "2026-08-21",
+   "note": "Xserver操作の司令塔。mashimashi.jp のサイトを check/diff/backup/deploy/rollback で安全に反映するCLI"
+  },
+  {
+   "id": "r17",
+   "kind": "repo",
+   "title": "motion-design-os",
+   "url": "https://github.com/mabbits999/motion-design-os",
+   "visibility": "private",
+   "updated": "2026-06-13",
+   "note": "共有デザインOS。16:9動画・図解アニメのGOOD/BAD/FIXED例と、Claude/Codex向けルール集"
+  },
+  {
+   "id": "r18",
+   "kind": "repo",
+   "title": "automation-dashboard",
+   "url": "https://github.com/mabbits999/automation-dashboard",
+   "visibility": "private",
+   "updated": "2026-05-31",
+   "note": "自動化監視ダッシュボード。おさるナレッジ化・note自動投稿・X自動投稿の稼働状況をスマホ1画面で確認。Next.js＋Supabase＋Vercel"
+  },
+  {
+   "id": "r19",
+   "kind": "repo",
+   "title": "mashi-auto-driving-system",
+   "url": "https://github.com/mabbits999/mashi-auto-driving-system",
+   "visibility": "private",
+   "updated": "2026-05-25",
+   "note": "自動運転システム。note自動入稿エージェント、SNSラボ、YouTubeサムネラボ、共有ナレッジ・スキルの詰め合わせ"
+  },
+  {
+   "id": "r20",
+   "kind": "repo",
+   "title": "osaru-mtg",
+   "url": "https://github.com/mabbits999/osaru-mtg",
+   "visibility": "private",
+   "updated": "2026-05-01",
+   "note": "おさるMTG用Next.jsアプリ。READMEは雛形。Vercelにデプロイ済み"
+  },
+  {
+   "id": "r21",
+   "kind": "repo",
+   "title": "stopwatch-app",
+   "url": "https://github.com/mabbits999/stopwatch-app",
+   "visibility": "private",
+   "updated": "2026-04-26",
+   "note": "HTML/CSS/JSだけのストップウォッチ。ラップ・ショートカット対応。Vercel: maggy-stopwatch-app"
+  },
+  {
+   "id": "r22",
+   "kind": "repo",
+   "title": "test",
+   "url": "https://github.com/mabbits999/test",
+   "visibility": "private",
+   "updated": "2026-09-24",
+   "note": "検証用。.claude フォルダだけが入っている"
+  },
+  {
+   "id": "r23",
+   "kind": "repo",
+   "title": "receipt-bot",
+   "url": "https://github.com/mabbits999/receipt-bot",
+   "visibility": "private",
+   "updated": "2026-04-16",
+   "note": "領収書を自動生成してGoogle Driveへ保存するボット（Python）"
+  },
+  {
+   "id": "r24",
+   "kind": "repo",
+   "title": "daily-research",
+   "url": "https://github.com/mabbits999/daily-research",
+   "visibility": "private",
+   "updated": "2026-04-07",
+   "note": "Vercel上のNode製API（日次リサーチ）。READMEなし。最新デプロイは失敗中"
+  },
+  {
+   "id": "r25",
+   "kind": "repo",
+   "title": "calender",
+   "url": "https://github.com/mabbits999/calender",
+   "visibility": "private",
+   "updated": "2026-01-24",
+   "note": "2026年カレンダーアプリ。月/週表示、誰でも予定追加（ブラウザ保存）。Next.js"
+  },
+  {
+   "id": "r26",
+   "kind": "repo",
+   "title": "daihon",
+   "url": "https://github.com/mabbits999/daihon",
+   "visibility": "public",
+   "updated": "2026-01-24",
+   "note": "台本アプリ（Next.js、Vercelにデプロイ済み）。READMEは未確認"
+  },
+  {
+   "id": "r27",
+   "kind": "repo",
+   "title": "gitpractice",
+   "url": "https://github.com/mabbits999/gitpractice",
+   "visibility": "private",
+   "updated": "2026-01-24",
+   "note": "Git練習用"
+  },
+  {
+   "id": "r28",
+   "kind": "repo",
+   "title": "osaru-threads",
+   "url": "https://github.com/mabbits999/osaru-threads",
+   "visibility": "private",
+   "updated": "2026-09-23",
+   "note": "マーケターおさるのThreads完全自動運用。1日3回の投稿を自動生成し、捏造・重複を監査して予約、反応を分析して自己改善する"
+  },
+  {
+   "id": "r29",
+   "kind": "repo",
+   "title": "kurafan-dougaseisaku",
+   "url": "https://github.com/mabbits999/kurafan-dougaseisaku",
+   "visibility": "private",
+   "updated": "2026-09-23",
+   "note": "物販クラファンの非属人セールス動画（VSL）を、ElevenLabs音声＋Remotion図解で1本まるごと自動制作するスキル"
+  },
+  {
+   "id": "r30",
+   "kind": "repo",
+   "title": "osaru-haisin-portal",
+   "url": "https://github.com/mabbits999/osaru-haisin-portal",
+   "visibility": "private",
+   "updated": "2026-09-21",
+   "note": "配信カレンダーポータル。LINE・オプチャ・メルマガの配信予定を1画面で管理（Next.js＋Neon）。Vercel: osaru-haishin-calendar"
+  },
+  {
+   "id": "r31",
+   "kind": "repo",
+   "title": "osaru-jv-partner",
+   "url": "https://github.com/mabbits999/osaru-jv-partner",
+   "visibility": "private",
+   "updated": "2026-09-18",
+   "note": "おさるJVパートナー向けのNext.jsアプリ。READMEは雛形のまま。Vercel の jv-portal に対応と思われる"
+  },
+  {
+   "id": "r32",
+   "kind": "repo",
+   "title": "urakata-tokuten-skill50",
+   "url": "https://github.com/mabbits999/urakata-tokuten-skill50",
+   "visibility": "private",
+   "updated": "2026-09-16",
+   "note": "裏方特典SKILL（50本）の保管庫。catalog.json で格納状況を管理し、配布ZIPを mashimashi.jp/urakata-benefits/ へ"
+  },
+  {
+   "id": "r33",
+   "kind": "repo",
+   "title": "youtube-bunseki",
+   "url": "https://github.com/mabbits999/youtube-bunseki",
+   "visibility": "private",
+   "updated": "2026-09-15",
+   "note": "YouTube分析レポート＆Chatwork定期通知。GASで動く配布セット（SKILL・設定サイドバー・導入手順つき）"
+  },
+  {
+   "id": "r34",
+   "kind": "repo",
+   "title": "off-kai-ninnzuuhaaku",
+   "url": "https://github.com/mabbits999/off-kai-ninnzuuhaaku",
+   "visibility": "private",
+   "updated": "2026-09-14",
+   "note": "特典SKILLの保管場所（30特典の catalog）。名前と違い、中身は特典スキルの管理。SKILL本体は未格納"
+  },
+  {
+   "id": "r35",
+   "kind": "repo",
+   "title": "douga-kirinuki",
+   "url": "https://github.com/mabbits999/douga-kirinuki",
+   "visibility": "public",
+   "updated": "2026-09-14",
+   "note": "X切り抜き動画 自動生成SKILL（配布版）。シートに動画URLを貼るだけで16:9の切り抜きとX投稿文を作る"
+  },
+  {
+   "id": "r36",
+   "kind": "repo",
+   "title": "douga-kirinuki-internal",
+   "url": "https://github.com/mabbits999/douga-kirinuki-internal",
+   "visibility": "private",
+   "updated": "2026-09-14",
+   "note": "X切り抜き動画 自動生成（社内版・ゴーゴーカレー様）。3日ごとにシートを見て切り抜き→Drive・Chatwork まで自動"
+  },
+  {
+   "id": "r37",
+   "kind": "repo",
+   "title": "utage-mojiokoshi",
+   "url": "https://github.com/mabbits999/utage-mojiokoshi",
+   "visibility": "private",
+   "updated": "2026-09-14",
+   "note": "UTAGE全動画・一括文字起こし。ローカルWhisperで全文・字幕を保存するCodexスキル（API料金0円）"
+  },
+  {
+   "id": "r38",
+   "kind": "repo",
+   "title": "youtube_download",
+   "url": "https://github.com/mabbits999/youtube_download",
+   "visibility": "private",
+   "updated": "2026-09-14",
+   "note": "YouTube・X・Instagram・UTAGE の動画を再生できるmp4で落とすClaude Codeスキル"
+  },
+  {
+   "id": "v01",
+   "kind": "vercel",
+   "title": "astra-edit-guide",
+   "url": "https://vercel.com/masashis-projects-bdd9496a/astra-edit-guide",
+   "live": "https://astra-edit-guide.vercel.app",
+   "updated": "2026-09-12",
+   "note": "動画編集 Astra の手引き"
+  },
+  {
+   "id": "v02",
+   "kind": "vercel",
+   "title": "slide-skill-index",
+   "url": "https://vercel.com/masashis-projects-bdd9496a/slide-skill-index",
+   "live": "https://skill.mashimashi.jp",
+   "updated": "2026-09-08",
+   "note": "独自ドメイン skill.mashimashi.jp"
+  },
+  {
+   "id": "v03",
+   "kind": "vercel",
+   "title": "ai-work-center",
+   "url": "https://vercel.com/masashis-projects-bdd9496a/ai-work-center",
+   "live": "https://mashi-work-center.vercel.app",
+   "updated": "2026-09-02",
+   "note": "Next.js"
+  },
+  {
+   "id": "v04",
+   "kind": "vercel",
+   "title": "osaru-line-tracker",
+   "url": "https://vercel.com/masashis-projects-bdd9496a/osaru-line-tracker",
+   "live": "https://osaru-line-tracker.vercel.app",
+   "updated": "2026-08-28",
+   "note": "LINE登録数の追跡"
+  },
+  {
+   "id": "v05",
+   "kind": "vercel",
+   "title": "osaru-pace",
+   "url": "https://vercel.com/masashis-projects-bdd9496a/osaru-pace",
+   "live": "https://osaru-pace.vercel.app",
+   "updated": "2026-08-27",
+   "note": "Next.js"
+  },
+  {
+   "id": "v06",
+   "kind": "vercel",
+   "title": "osaru-malaysia-camp",
+   "url": "https://vercel.com/masashis-projects-bdd9496a/osaru-malaysia-camp",
+   "live": "https://osaru-malaysia-camp.vercel.app",
+   "updated": "2026-08-18",
+   "note": "Next.js"
+  },
+  {
+   "id": "v07",
+   "kind": "vercel",
+   "title": "automation-dashboard",
+   "url": "https://vercel.com/masashis-projects-bdd9496a/automation-dashboard",
+   "live": "https://automation-dashboard-woad.vercel.app",
+   "repo": "automation-dashboard",
+   "updated": "2026-06-01",
+   "note": "Next.js。Supabase 同名プロジェクトと連携"
+  },
+  {
+   "id": "v08",
+   "kind": "vercel",
+   "title": "lp-design-gallery",
+   "url": "https://vercel.com/masashis-projects-bdd9496a/lp-design-gallery",
+   "live": "https://lp-design-gallery.vercel.app",
+   "updated": "2026-05-28",
+   "note": "LPデザインのギャラリー"
+  },
+  {
+   "id": "v09",
+   "kind": "vercel",
+   "title": "_deploy_site",
+   "url": "https://vercel.com/masashis-projects-bdd9496a/_deploy_site",
+   "live": "https://deploysite-psi.vercel.app",
+   "updated": "2026-05-27",
+   "note": ""
+  },
+  {
+   "id": "v10",
+   "kind": "vercel",
+   "title": "faq-site",
+   "url": "https://vercel.com/masashis-projects-bdd9496a/faq-site",
+   "live": "https://faq-site-alpha.vercel.app",
+   "updated": "2026-05-27",
+   "note": "FAQサイト"
+  },
+  {
+   "id": "v11",
+   "kind": "vercel",
+   "title": "daihon",
+   "url": "https://vercel.com/masashis-projects-bdd9496a/daihon",
+   "live": "https://daihon.vercel.app",
+   "repo": "daihon",
+   "updated": "2026-05-27",
+   "note": "Next.js"
+  },
+  {
+   "id": "v12",
+   "kind": "vercel",
+   "title": "maggy-stopwatch-app",
+   "url": "https://vercel.com/masashis-projects-bdd9496a/maggy-stopwatch-app",
+   "live": "https://maggy-stopwatch-app.vercel.app",
+   "repo": "stopwatch-app",
+   "updated": "2026-05-26",
+   "note": "ストップウォッチ"
+  },
+  {
+   "id": "v13",
+   "kind": "vercel",
+   "title": "calender",
+   "url": "https://vercel.com/masashis-projects-bdd9496a/calender",
+   "live": "https://calender-orpin-alpha.vercel.app",
+   "repo": "calender",
+   "updated": "2026-05-26",
+   "note": "Next.js"
+  },
+  {
+   "id": "v14",
+   "kind": "vercel",
+   "title": "osaru-mtg",
+   "url": "https://vercel.com/masashis-projects-bdd9496a/osaru-mtg",
+   "live": "https://osaru-mtg.vercel.app",
+   "repo": "osaru-mtg",
+   "updated": "2026-05-22",
+   "note": "Next.js"
+  },
+  {
+   "id": "v15",
+   "kind": "vercel",
+   "title": "daily-research",
+   "url": "https://vercel.com/masashis-projects-bdd9496a/daily-research",
+   "live": "https://daily-research-masashis-projects-bdd9496a.vercel.app",
+   "repo": "daily-research",
+   "updated": "2026-05-16",
+   "status": "error",
+   "note": "最新デプロイが失敗中"
+  },
+  {
+   "id": "v16",
+   "kind": "vercel",
+   "title": "osaru-event-timeline",
+   "url": "https://vercel.com/masashis-projects-bdd9496a/osaru-event-timeline",
+   "live": "https://osaru-event-timeline.vercel.app",
+   "updated": "2026-09-25",
+   "note": "おさるイベントのタイムライン"
+  },
+  {
+   "id": "v17",
+   "kind": "vercel",
+   "title": "osaru-script-studio",
+   "url": "https://vercel.com/masashis-projects-bdd9496a/osaru-script-studio",
+   "live": "https://osaru-script-studio.vercel.app",
+   "updated": "2026-09-22",
+   "note": "台本スタジオ"
+  },
+  {
+   "id": "v18",
+   "kind": "vercel",
+   "title": "osaru-haishin-calendar",
+   "url": "https://vercel.com/masashis-projects-bdd9496a/osaru-haishin-calendar",
+   "live": "https://osaru-haishin-calendar.vercel.app",
+   "updated": "2026-09-21",
+   "note": "配信カレンダーポータル（LINE・オプチャ・メルマガ）。ログインあり",
+   "repo": "osaru-haisin-portal"
+  },
+  {
+   "id": "v19",
+   "kind": "vercel",
+   "title": "launch-director",
+   "url": "https://vercel.com/masashis-projects-bdd9496a/launch-director",
+   "live": "https://launch-director-beige.vercel.app",
+   "updated": "2026-09-20",
+   "note": "ローンチディレクター"
+  },
+  {
+   "id": "v20",
+   "kind": "vercel",
+   "title": "jv-portal",
+   "url": "https://vercel.com/masashis-projects-bdd9496a/jv-portal",
+   "live": "https://jv-portal-nu.vercel.app",
+   "updated": "2026-09-18",
+   "note": "JVパートナーポータル",
+   "repo": "osaru-jv-partner"
+  },
+  {
+   "id": "v21",
+   "kind": "vercel",
+   "title": "mittyaku_satuei",
+   "url": "https://vercel.com/masashis-projects-bdd9496a/mittyaku_satuei",
+   "live": "https://mittyakusatuei.vercel.app",
+   "updated": "2026-09-18",
+   "note": "密着撮影"
+  },
+  {
+   "id": "v22",
+   "kind": "vercel",
+   "title": "mm-dash",
+   "url": "https://vercel.com/masashis-projects-bdd9496a/mm-dash",
+   "live": "https://mm-dash-pi.vercel.app",
+   "updated": "2026-09-17",
+   "note": "ダッシュボード（mm-dash）"
+  },
+  {
+   "id": "v23",
+   "kind": "vercel",
+   "title": "sns-auth-callback",
+   "url": "https://vercel.com/masashis-projects-bdd9496a/sns-auth-callback",
+   "live": "https://sns-auth-callback.vercel.app",
+   "updated": "2026-09-14",
+   "note": "SNS認証のコールバック受け口（画面はほぼなし）"
+  },
+  {
+   "id": "s01",
+   "kind": "supabase",
+   "title": "automation-dashboard",
+   "url": "https://supabase.com/dashboard/project/exyajpkwtwauipimalpk",
+   "updated": "2026-05-18",
+   "note": "東京リージョン / Postgres 17 / 稼働中"
+  },
+  {
+   "id": "s02",
+   "kind": "supabase",
+   "title": "osaru-line-secretary",
+   "url": "https://supabase.com/dashboard/project/npnsndtppisetekamzgo",
+   "updated": "2026-01-24",
+   "note": "東京リージョン / Postgres 17 / 稼働中"
+  },
+  {
+   "id": "x01",
+   "kind": "xserver",
+   "title": "lp-skill",
+   "url": "https://lp-skill.mashimashi.jp/",
+   "updated": "",
+   "note": "会員サイト（まーしー式LP）。public_html/lp-skill。上書き厳禁"
+  },
+  {
+   "id": "x02",
+   "kind": "xserver",
+   "title": "ai-skill",
+   "url": "https://mashimashi.jp/ai-skill/",
+   "updated": "",
+   "note": "public_html/ai-skill"
+  },
+  {
+   "id": "x03",
+   "kind": "xserver",
+   "title": "osaru-daihon",
+   "url": "https://mashimashi.jp/osaru-daihon/",
+   "updated": "",
+   "note": "台本。public_html/osaru-daihon"
+  },
+  {
+   "id": "x04",
+   "kind": "xserver",
+   "title": "samune",
+   "url": "https://mashimashi.jp/samune/",
+   "updated": "",
+   "note": "サムネイル。public_html/samune"
+  },
+  {
+   "id": "x05",
+   "kind": "xserver",
+   "title": "line-secretary",
+   "url": "https://mashimashi.jp/line-secretary/",
+   "updated": "",
+   "status": "private",
+   "note": "LINE秘書の裏側（webhook などの PHP）。.htaccess で閉じてあり、ブラウザでは開けません"
+  },
+  {
+   "id": "x06",
+   "kind": "xserver",
+   "title": "check",
+   "url": "https://mashimashi.jp/check/",
+   "updated": "",
+   "note": "public_html/check"
+  },
+  {
+   "id": "x07",
+   "kind": "xserver",
+   "title": "utage",
+   "url": "https://mashimashi.jp/utage/",
+   "updated": "",
+   "note": "UTAGE関連。public_html/utage"
+  },
+  {
+   "id": "x08",
+   "kind": "xserver",
+   "title": "おさる進捗レポート 2026-09-13",
+   "url": "https://mashimashi.jp/osaru-progress-report-20260913.html",
+   "updated": "2026-09-13",
+   "note": "public_html 直下の単体HTML"
+  },
+  {
+   "id": "x09",
+   "kind": "xserver",
+   "title": "hub（このページ）",
+   "url": "https://mashimashi.jp/hub/",
+   "updated": "2026-09-13",
+   "note": "ページ総覧の mashimashi.jp 版。アップロード後に開けます"
+  },
+  {
+   "id": "x10",
+   "kind": "xserver",
+   "title": "urakata-benefits",
+   "url": "https://mashimashi.jp/urakata-benefits/",
+   "updated": "2026-09-16",
+   "note": "裏方特典SKILLの受取ページ。public_html/urakata-benefits"
+  }
  ]
 }
 </script>
@@ -699,7 +1668,7 @@ body[data-editing="1"] .row .title::after{content:none}
         '</form>' +
       '</div>' +
       '<main id="list">' + listHTML(st, f) + '</main>' +
-      '<footer class="foot"><span>★のお気に入りとカード上の名前変更は、この端末のブラウザに保存されます（claude.ai の公開版では「保存して公開」で名前を全員に反映できます）。</span><span>「追加・編集」から登録・修正すると、この一覧そのものが新しい版として公開されます。</span><span>GitHub・Vercel・Supabase・mashimashi.jp の一覧は 2026-09-13 時点の内容です。</span></footer>';
+      '<footer class="foot"><span>★のお気に入りとカード上の名前変更は、この端末のブラウザに保存されます（claude.ai の公開版では「保存して公開」で名前を全員に反映できます）。</span><span>「追加・編集」から登録・修正すると、この一覧そのものが新しい版として公開されます。</span><span>GitHub・Vercel・Supabase・mashimashi.jp の一覧は 2026-09-24 時点の内容です。</span></footer>';
   }
 
   // Full replacement document, rendered from the same source this page was built from.
